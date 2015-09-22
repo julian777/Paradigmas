@@ -1,5 +1,11 @@
 # Proyecto de paradigmas
 
-1. Erlang
-2. Prolog
-3. Java
+Parseador de Twitter y facebook.
+
+## Erlang
+Lorem ipsum
+## Prolog
+Lorem ipsum
+## Java
+Lorem ipsum
+
