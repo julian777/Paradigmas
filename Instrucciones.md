@@ -6,7 +6,7 @@
 2. git commit -m "Mensaje de commit"
 3. git push
 ```
-> Opciona solo si se añaden archivos
+> Paso 1 es opcional, solo usar si se añaden archivos
 
 ## Actualizar local
 
