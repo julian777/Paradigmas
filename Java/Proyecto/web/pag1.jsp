@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%-- 
     Document   : pag1
     Created on : 20-sep-2015, 11:01:07

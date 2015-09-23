@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Modelo.ModeloErlang"%>
 <%@page import="Modelo.ModeloFacebook"%>
@@ -10,6 +11,7 @@
         <title>Ejemplo Grafico</title>
         <script src="js/Chart.js"></script>
         <script type="text/javascript" src="js/scriptGrafico.js"></script>
+        <script type="text/javascript" src="js/barras.js"></script>
     </head>
     <% String datos = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoUnoToJSON();%>
 
@@ -26,6 +28,6 @@
         <div id="canvas-holder">
             <canvas id="chart-area3" width="600" height="300"></canvas>
         </div>
-        <script src="js/scriptGrafico.js"></script>
+        <script src="js/barras.js"></script>
     </body>
-</html>
+    <html/>

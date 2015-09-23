@@ -18,7 +18,7 @@
 <br>
 <a href="pag1.jsp">ir a Grafico Pastel</a>
 <br>
-<a href="pag3.jsp">ir a Grafico de Dona</a>
+<a href="pag3.jsp">ir a Grafico Pastelillo</a>
         
         <div id="canvas-holder">
             <canvas id="chart-area4" width="600" height="300"></canvas>
