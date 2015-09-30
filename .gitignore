@@ -18,3 +18,5 @@ hs_err_pid*
 
 *.beam
 *.erl~
+/Java/GestorParadigmas/dist/
+/Java/Proyecto/dist/
