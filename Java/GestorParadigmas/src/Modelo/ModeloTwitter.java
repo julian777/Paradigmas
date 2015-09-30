@@ -37,4 +37,5 @@ public class ModeloTwitter implements Serializable {
 
      private static ModeloTwitter mod = null;
     private GestorFeedTwitter gUsuarios;
+    private String URL_Servidor = "localhost";
 }
