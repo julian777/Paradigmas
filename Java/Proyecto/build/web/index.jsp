@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Modelo.ModeloErlang"%>
 <%@page import="Modelo.ModeloFacebook"%>
@@ -11,8 +10,8 @@
         <title>Ejemplo Grafico</title>
         <script src="js/Chart.js"></script>
         <script type="text/javascript" src="js/scriptGrafico.js"></script>
-        <script type="text/javascript" src="js/barras.js"></script>
     </head>
+    <% ModeloTwitter.crearInstancia(getServletContext().getInitParameter("URL_servidor")); %>
     <% String datos = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoUnoToJSON();%>
 
     <body onload="init()">       
@@ -28,6 +27,6 @@
         <div id="canvas-holder">
             <canvas id="chart-area3" width="600" height="300"></canvas>
         </div>
-        <script src="js/barras.js"></script>
+        <script src="js/scriptGrafico.js"></script>
     </body>
     <html/>
