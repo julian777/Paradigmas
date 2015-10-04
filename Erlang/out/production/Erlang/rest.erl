@@ -26,6 +26,7 @@ get_aux(URL)                     -> request(get,  {URL, []}).
 
 request(Method, Body) -> httpc:request(Method, Body, [], []).
 
-response_body({ok, { _, _, Body}}) -> Body.
+response_body({ok, { _, _, Body}}) -> Body;
+response_body({error,{A,_,B}}) -> io:format("Error -> ~p, ~p~n",A,B).
 
 
