@@ -12,7 +12,6 @@ function init() {
     var datosJson = JSON.parse(datos);
 
     matriz = new Array(datosJson.length);
-
     for (var i = 0; i < datosJson.length; i++) {
         var str = JSON.stringify(datosJson[i]);
         var res = str.split(",");
@@ -20,10 +19,9 @@ function init() {
         res[0] = res[0].replace(patron1, '');
         res[0] = res[0].replace(patron2, '');
         res[0] = res[0].replace(patron2, '');
-        res[1] = res[1].replace(patron3, '');
-        res[2] = res[2].replace(patron1, '');
         res[2] = res[2].replace(patron2, '');
         res[2] = res[2].replace(patron2, '');
+        res[2] = res[2].replace(patron3, '');
 
         matriz[i] = new Array(3);
 
@@ -48,6 +46,7 @@ function cargarGrafico() {
         cantidad_mensajes[i] = matriz[i][1];
         tema[i] = matriz[i][2];
     }
+    
 
     var barChartData = {
         labels: hora,

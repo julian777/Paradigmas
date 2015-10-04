@@ -5,12 +5,14 @@
 
 <!DOCTYPE html>
 <html lang="es">
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
         <title>Ejemplo Grafico</title>
         <script src="js/Chart.js"></script>
         <script type="text/javascript" src="js/scriptGrafico.js"></script>
     </head>
+
     <% ModeloTwitter.crearInstancia(getServletContext().getInitParameter("URL_servidor")); %>
     <% String datos = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoUnoToJSON();%>
 
