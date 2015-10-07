@@ -14,3 +14,10 @@
 1. git fetch
 2. git merge origin/master
 ```
+
+## En caso de problemas de conflicto
+``` git
+1. git reset --hard HEAD
+2. git pull
+```
+> Se pierden los cambios locales
