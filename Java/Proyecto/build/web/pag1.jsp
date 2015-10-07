@@ -20,6 +20,8 @@
 
     <% ModeloTwitter.crearInstancia(getServletContext().getInitParameter("URL_servidor")); %>
     <% String datosPastel = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoDosToJSON();%>
+    
+    
 
     <body onload="init()">
         
