@@ -1,4 +1,4 @@
-//(hora,cantidad_mensajes,tema)
+//(hora,cant_mensajes)
 
 var matriz;
 
@@ -17,17 +17,12 @@ function init() {
         var res = str.split(",");
 
         res[0] = res[0].replace(patron1, '');
-        res[0] = res[0].replace(patron2, '');
-        res[0] = res[0].replace(patron2, '');
-        res[2] = res[2].replace(patron2, '');
-        res[2] = res[2].replace(patron2, '');
-        res[2] = res[2].replace(patron3, '');
+        res[1] = res[1].replace(patron3, '');
 
-        matriz[i] = new Array(3);
+        matriz[i] = new Array(2);
 
         matriz[i][0] = res[0];
         matriz[i][1] = res[1];
-        matriz[i][2] = res[2];
 
     }
 
@@ -39,12 +34,10 @@ function cargarGrafico() {
 
     var hora = [];
     var cantidad_mensajes = [];
-    var tema = [];
 
     for (var i = 0; i < matriz.length; i++) {
         hora[i] = matriz[i][0];
         cantidad_mensajes[i] = matriz[i][1];
-        tema[i] = matriz[i][2];
     }
     
 

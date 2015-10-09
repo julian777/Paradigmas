@@ -7,12 +7,16 @@
         <title>Grafico de Pastelillo</title>
         <script src="js/Chart.js"></script>
     </head>
-        <% ModeloTwitter.crearInstancia(getServletContext().getInitParameter("URL_servidor")); %>
+    <% ModeloTwitter.crearInstancia(getServletContext().getInitParameter("URL_servidor")); %>
+    <% String datos = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoCuatroToJSON();%>
     <body onload="init()">
         <h1>Cantidad de mensajes con Hashtag y sin Hashtag</h1><br>
         <a href="Twitter.jsp">volver a menu Twitter</a>
         <br>
         <a href="pag5.jsp">ir a Grafico siguiente...</a>
+
+
+        <input id="datos" hidden name="datos" type="text" value='<%=datos%>'/>
 
         <div id="canvas-holder">
             <canvas id="chart-area2" width="600" height="300"></canvas>

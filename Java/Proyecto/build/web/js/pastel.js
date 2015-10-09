@@ -1,4 +1,10 @@
 var matriz;
+var a = 0, b = 0, c = 0, d = 0, e = 0;
+var t1 = " ",t2 = " ",t3 = " ",t4 = " ",t5 = " ";
+var cantidad_mensajes = [];
+var numero = 0;
+
+var tema = [];
 
 function init() {
 
@@ -8,7 +14,6 @@ function init() {
 
     var datos = document.getElementById("datosPastel").value;
     var datosJson = JSON.parse(datos);
-        alert(datos);
     matriz = new Array(datosJson.length);
 
     for (var i = 0; i < datosJson.length; i++) {
@@ -16,18 +21,11 @@ function init() {
         var res = str.split(",");
 
         res[0] = res[0].replace(patron1, '');
-        res[0] = res[0].replace(patron2, '');
-        res[0] = res[0].replace(patron2, '');
         res[1] = res[1].replace(patron3, '');
-        res[2] = res[2].replace(patron1, '');
-        res[2] = res[2].replace(patron2, '');
-        res[2] = res[2].replace(patron2, '');
 
-        matriz[i] = new Array(3);
-
+        matriz[i] = new Array(2);
         matriz[i][0] = res[0];
         matriz[i][1] = res[1];
-        matriz[i][2] = res[2];
 
     }
 
@@ -37,21 +35,25 @@ function init() {
 
 function cargarGrafico() {
 
-    var hora = [];
-    var cantidad_mensajes = [];
-    var tema = [];
 
     for (var i = 0; i < matriz.length; i++) {
-        hora[i] = matriz[i][0];
-        cantidad_mensajes[i] = matriz[i][1];
-        tema[i] = matriz[i][2];
+        cantidad_mensajes[i] = matriz[i][0];
+        tema[i] = matriz[i][1];
+        if(i==0){a= cantidad_mensajes[i]; t1 = tema[i];}
+        if(i==1){b=cantidad_mensajes[i]; t2 = tema[i];}
+        if(i==2){c=cantidad_mensajes[i]; t3 = tema[i];}
+        if(i==3){d=cantidad_mensajes[i]; t4 = tema[i];}
+        if(i==4){e=cantidad_mensajes[i]; t5 = tema[i];}
     }
-    
+}
+
+
 
 
 var pieData = [{value: 40, color: "#0b82e7", highlight: "#0c62ab", label: "Google Chrome"},
     {
-        value: 16,
+        
+        value: a.valueOf(),
         color: "#e3e860",
         highlight: "#a9ad47",
         label: "Android"
@@ -60,7 +62,7 @@ var pieData = [{value: 40, color: "#0b82e7", highlight: "#0c62ab", label: "Googl
         value: 11,
         color: "#eb5d82",
         highlight: "#b74865",
-        label: "Firefox"
+        label: t1
     },
     {
         value: 10,
@@ -80,4 +82,3 @@ var ctx = document.getElementById("chart-area").getContext("2d");
 window.myPie = new Chart(ctx).Pie(pieData);
 
 
-}

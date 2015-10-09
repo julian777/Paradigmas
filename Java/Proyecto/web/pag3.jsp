@@ -8,8 +8,9 @@
         <script src="js/Chart.js"></script>
         <script type="text/javascript" src="js/scriptGrafico.js"></script>
     </head>
+    
     <% ModeloTwitter.crearInstancia(getServletContext().getInitParameter("URL_servidor"));%>
-    <% String datos = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoUnoToJSON();%>
+    <% String datos = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoTresToJSON();%>
 
     <body onload="init()">
         <h1>Frecuencia de mensajes por hora independiente del tema</h1><br>
@@ -23,6 +24,6 @@
         <div id="canvas-holder">
             <canvas id="chart-area3" width="600" height="300"></canvas>
         </div>
-        <script src="js/scriptGrafico.js"></script>F
+        <script src="js/scriptGrafico.js"></script>
     </body>
 </html>

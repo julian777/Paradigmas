@@ -22,7 +22,7 @@
         <br>
         <a href="pag3.jsp">ir a Grafico siguiente...</a>
         
-        <input id="datos" hidden name="datos" type="text" value='<%=datosPastel%>'/>
+        <input id="datosPastel" hidden name="datosPastel" type="text" value='<%=datosPastel%>'/>
 
         <div id="canvas-holder">
             <canvas id="chart-area" width="600" height="300"></canvas>

@@ -9,6 +9,7 @@
         <script type="text/javascript" src=""></script>
     </head>
     <% ModeloTwitter.crearInstancia(getServletContext().getInitParameter("URL_servidor"));%>
+    
     <body onload="init()">
         <h1>Grafico Hastag mas utiizados por hora </h1>
         <a href="Twitter.jsp">volver a menu Twitter</a>
