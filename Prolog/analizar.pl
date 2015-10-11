@@ -14,7 +14,7 @@ word(["jaja"]) :- write("chiste").
 
 analizar(X):- printout(X).
 
+printout([]):- false.
 printout(N):- word(N),!.
-printout([]):- !.
-printout([N|Tail]):- word(N);write('-'),printout(Tail).
+printout([N|Tail]):- word(N) ; printout(Tail).
 
