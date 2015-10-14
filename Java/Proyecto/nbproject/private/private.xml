@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
@@ -20,3 +21,27 @@
         <group name="JavaParadigmas"/>
     </open-files>
 </project-private>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>web/js/scriptGrafico.js</url>
+            <bookmark id="1">
+                <name/>
+                <line>62</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group name="JavaParadigmas"/>
+        <group>
+            <file>file:/home/julian/Escritorio/ProyectoParadigmas/Paradigmas/Java/Proyecto/web/js/sietebarra.js</file>
+            <file>file:/home/julian/Escritorio/ProyectoParadigmas/Paradigmas/Java/Proyecto/web/pag8.jsp</file>
+            <file>file:/home/julian/Escritorio/ProyectoParadigmas/Paradigmas/Java/Proyecto/web/Twitter.jsp</file>
+            <file>file:/home/julian/Escritorio/ProyectoParadigmas/Paradigmas/Java/Proyecto/web/pag7.jsp</file>
+        </group>
+    </open-files>
+</project-private>
+>>>>>>> origin/master

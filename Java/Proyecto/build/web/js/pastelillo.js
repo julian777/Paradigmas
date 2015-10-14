@@ -11,7 +11,7 @@ function init() {
 
     var datos = document.getElementById("datos").value;
     var datosJson = JSON.parse(datos);
-
+    alert(datosJson);
     matriz = new Array(datosJson.length);
     for (var i = 0; i < datosJson.length; i++) {
         var str = JSON.stringify(datosJson[i]);
@@ -40,20 +40,20 @@ function cargarGrafico() {
         sinHastag[i] = matriz[i][0];
         conHastag[i] = matriz[i][1];
     }
-    
 
 
-var pieData = [{value: sinHastag, color: "#0b82e7", highlight: "#0c62ab", label: "Sin Hashtag"},
-    {
-        value: conHastag,
-        color: "#e965db",
-        highlight: "#a6429b",
-        label: "ConHastag"
-    }
-];
 
-var ctx2 = document.getElementById("chart-area2").getContext("2d");
-window.myPie = new Chart(ctx2).Doughnut(pieData);
+    var pieData = [{value: sinHastag, color: "#0b82e7", highlight: "#0c62ab", label: "Sin Hashtag"},
+        {
+            value: conHastag,
+            color: "#e965db",
+            highlight: "#a6429b",
+            label: "ConHastag"
+        }
+    ];
+
+    var ctx2 = document.getElementById("chart-area2").getContext("2d");
+    window.myPie = new Chart(ctx2).Doughnut(pieData);
 
 
 }
