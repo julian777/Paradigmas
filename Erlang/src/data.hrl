@@ -9,8 +9,6 @@
 -author("mario").
 
 
--record(feed,{key,text,time,place,user,source}).
+-record(feed, {key, text, date, time, place, hashtag, user, source}).
+-record(final, {key, subject, date, time, place, hashtag, user, source}).
 
--record(hashtag,{key,text}).
-
--record(feed_ht,{feed,ht}).
