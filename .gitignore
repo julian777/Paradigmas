@@ -31,7 +31,6 @@ nb-configuration.xml
 .nb-gradle/
 /Java/GestorParadigmas/dist/
 /Java/Proyecto/dist/
-private.*
 
 # General
 *.pdf
@@ -40,7 +39,6 @@ built-jar.properties
 
 # ItelliJ IDE
 
-*.xml
 
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio
 
