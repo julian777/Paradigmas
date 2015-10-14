@@ -13,10 +13,12 @@ function init() {
     for (var i = 0; i < datosJson.length; i++) {
         st = JSON.stringify(datosJson[i]);
         var res = st.split(",");
-            
+          
         res[0] = res[0].replace(patron1, '');
+        res[0] = res[0].replace(patron2, '');
+        res[0] = res[0].replace(patron2, '');
         res[2] = res[2].replace(patron3, '');
-        
+        alert(res[0]);
         vector1[i] = res[1];
         vector[i] = res[2]; 
         vector2[i] = res[0];
@@ -37,7 +39,10 @@ function cargarGrafico() {
         
         tema[i] = vector[i];
         cantidad_mensajes[i] = vector1[i];
-        hora[i] = vector2[i];
+        f = vector2[i];
+        var res = f.split(" ");
+        hora[i]=res[0];
+         
     }
     
 
