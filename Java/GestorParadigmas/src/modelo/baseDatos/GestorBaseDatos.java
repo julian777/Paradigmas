@@ -10,7 +10,7 @@ public class GestorBaseDatos {
             throws ClassNotFoundException,
             IllegalAccessException,
             InstantiationException {
-        URL_servidor = (servidor != null) ? servidor : SERVIDOR_POR_DEFECTO;
+        URL_servidor = (servidor != null) ? SERVIDOR_POR_DEFECTO : SERVIDOR_POR_DEFECTO;
         Class.forName(MANEJADOR_DB).newInstance();
     }
 

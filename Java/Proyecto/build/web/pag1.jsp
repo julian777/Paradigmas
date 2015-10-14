@@ -1,3 +1,4 @@
+<%@page import="modelo.gestorMensaje.GestorFeedTwitter"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Modelo.ModeloTwitter"%>
 
@@ -11,8 +12,11 @@
         <script type="text/javascript" src="js/histograma.js"></script>
     </head>
 
-    <% ModeloTwitter.crearInstancia(getServletContext().getInitParameter("URL_servidor")); %>
-    <% String datos = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoUnoToJSON();%>
+    <% 
+        ModeloTwitter m  = ModeloTwitter.crearInstancia(null); 
+       GestorFeedTwitter gft = m.getgUsuarios();
+        String datos = gft.datosGraficoUnoToJSON();
+    %>
 
     <body onload="init()">       
         <h1>Horas del día con mayor afluencia de un tema</h1><br>

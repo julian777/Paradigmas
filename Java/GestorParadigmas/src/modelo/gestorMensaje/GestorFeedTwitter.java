@@ -62,7 +62,7 @@ public class GestorFeedTwitter {
         } catch (Exception e) {
             e.printStackTrace(System.err);
         } finally {
-            bd.cerrarConexion();
+            //bd.cerrarConexion();
         }
 
         return graficoUno;
