@@ -7,7 +7,7 @@ function init() {
     var patron2 = '"';
     var patron3 = "]";
 
-    var datos = document.getElementById("datos").value;
+    var datos = document.getElementById("datosA").value;
     var datosJson = JSON.parse(datos);
     loco = datosJson;
     for (var i = 0; i < datosJson.length; i++) {

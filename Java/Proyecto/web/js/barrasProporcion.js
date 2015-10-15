@@ -11,7 +11,7 @@ function init() {
     var patron2 = '"';
     var patron3 = "]";
 
-    var datos = document.getElementById("datos").value;
+    var datos = document.getElementById("datosProporcion").value;
     var datosJson = JSON.parse(datos);
     matriz = new Array(datosJson.length);
 

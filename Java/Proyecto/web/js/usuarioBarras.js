@@ -7,7 +7,7 @@ function init() {
     var patron2 = '"';
     var patron3 = "]";
 
-    var datos = document.getElementById("datos").value;
+    var datos = document.getElementById("datosUsuario").value;
     var datosJson = JSON.parse(datos);
 
     matriz = new Array(datosJson.length);
@@ -44,7 +44,7 @@ function cargarGrafico() {
         labels: IDusuario,
         datasets: [
             {
-                fillColor: "#6b9dfa",
+                    fillColor: "#FF0000",
                 strokeColor: "#ffffff",
                 highlightFill: "#1864f2",
                 highlightStroke: "#ffffff",

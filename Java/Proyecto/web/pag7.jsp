@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
         <title></title>
         <script src="js/Chart.js"></script>
-        <script type="text/javascript" src="js/sietebarra"></script>
+       
     </head>
     <% ModeloTwitter.crearInstancia(getServletContext().getInitParameter("URL_servidor"));%>
     <% String datosD = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoSeisToJSON();%>
@@ -22,6 +22,6 @@
             <canvas id="chart-area2" width="600" height="300"></canvas>
         </div>
         
-        <script src="js/sietebarra.js"></script>
+        <script src="js/histogramaDensidad.js"></script>
     </body>
 </html>

@@ -9,13 +9,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
         <title></title>
         <script src="js/Chart.js"></script>
-        <script type="text/javascript" src="js/histograma8.js"></script>
+        <script type="text/javascript" src="js/histogramaApariciones.js"></script>
     </head>
 
     <% 
         ModeloTwitter m  = ModeloTwitter.crearInstancia(null); 
        GestorFeedTwitter gft = m.getgUsuarios();
-        String datos = gft.datosGraficoSieteToJSON();
+        String datosA = gft.datosGraficoSieteToJSON();
     %>
 
     <body onload="init()">       
@@ -24,12 +24,12 @@
         <br>
         <a href="pag9.jsp">ir a Grafico siguiente...</a>
 
-        <input id="datos" hidden name="datos" type="text" value='<%=datos%>'/>
+        <input id="datosA" hidden name="datosA" type="text" value='<%=datosA%>'/>
 
 
         <div id="canvas-holder">
             <canvas id="chart-area90" width="600" height="300"></canvas>
         </div>
-        <script src="js/histograma8.js"></script>
+        <script src="js/histogramaApariciones.js"></script>
     </body>
     <html/>

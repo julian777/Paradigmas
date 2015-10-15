@@ -9,7 +9,7 @@ function init() {
     var patron2 = '"';
     var patron3 = "]";
 
-    var datos = document.getElementById("datos").value;
+    var datos = document.getElementById("datosHashtag").value;
     var datosJson = JSON.parse(datos);
  
     matriz = new Array(datosJson.length);

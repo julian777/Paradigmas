@@ -6,11 +6,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
         <title>Grafico Pastel</title>
         <script src="js/Chart.js"></script>
-        <script type="text/javascript" src="js/pastel.js"></script>
+        <script type="text/javascript" src="js/barrasProporcion.js"></script>
     </head>
 
     <% ModeloTwitter.crearInstancia(getServletContext().getInitParameter("URL_servidor")); %>
-    <% String datos = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoDosToJSON();%>
+    <% String datosProporcion = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoDosToJSON();%>
     
     
 
@@ -22,7 +22,7 @@
         <br>
         <a href="pag3.jsp">ir a Grafico siguiente...</a>
         
-        <input id="datos" hidden name="datos" type="text" value='<%=datos%>'/>
+        <input id="datosProporcion" hidden name="datosProporcion" type="text" value='<%=datosProporcion%>'/>
 
         <div id="canvas-holder">
             <canvas id="chart-area" width="600" height="300"></canvas>
