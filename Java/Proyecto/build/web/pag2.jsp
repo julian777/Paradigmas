@@ -10,7 +10,7 @@
     </head>
 
     <% ModeloTwitter.crearInstancia(getServletContext().getInitParameter("URL_servidor")); %>
-    <% String datosPastel = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoDosToJSON();%>
+    <% String datos = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoDosToJSON();%>
     
     
 
@@ -22,12 +22,12 @@
         <br>
         <a href="pag3.jsp">ir a Grafico siguiente...</a>
         
-        <input id="datosPastel" hidden name="datosPastel" type="text" value='<%=datosPastel%>'/>
+        <input id="datos" hidden name="datos" type="text" value='<%=datos%>'/>
 
         <div id="canvas-holder">
             <canvas id="chart-area" width="600" height="300"></canvas>
         </div>
-        
         <script src="js/pastel.js"></script>
+        
     </body>
 </html>

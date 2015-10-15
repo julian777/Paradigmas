@@ -65,6 +65,20 @@ DELIMITER ;
 
 call Con_o_Sin_Hastag();
 
+-- Punto No5.0 obtener todos los mensajes cuyo campo hastag sea = 1 para analizar frecuencias
+DELIMITER $$ 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Mensajes_con_Hastag`
+()
+BEGIN 
+
+SELECT Twitter.mensaje FROM Twitter
+where hastag = 1;
+
+END$$ 
+DELIMITER ;
+
+call Mensajes_con_Hastag();
+
 -- Punto No5 Devuelve un string con usuario y su cantidad de mensajes
 -- ordena a los usuarios con mayor cantidad de mensajes arriba, de forma que
 -- luego se pueden tomar los primeros 5 o 10 y graficarlos
@@ -164,6 +178,20 @@ END$$
 DELIMITER ;
 
 call Con_o_Sin_Hastag_facebook();
+
+-- Punto No5.0 obtener todos los mensajes cuyo campo hastag sea = 1 para analizar frecuencias
+DELIMITER $$ 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Mensajes_con_Hastag_facebook`
+()
+BEGIN 
+
+SELECT Facebook.mensaje FROM Facebook
+where hastag = 1;
+
+END$$ 
+DELIMITER ;
+
+call Mensajes_con_Hastag_facebook();
 
 -- Punto No5 Devuelve un string con usuario y su cantidad de mensajes
 -- ordena a los usuarios con mayor cantidad de mensajes arriba, de forma que

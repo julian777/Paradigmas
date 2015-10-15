@@ -11,7 +11,7 @@ function init() {
     var patron2 = '"';
     var patron3 = "]";
 
-    var datos = document.getElementById("datosPastel").value;
+    var datos = document.getElementById("datos").value;
     var datosJson = JSON.parse(datos);
     matriz = new Array(datosJson.length);
 
@@ -44,38 +44,21 @@ var t1 = " ";
         if(i==0){a= cantidad_mensajes[i];};
     }
 
+var barChartData = {
+    labels: tema,
+    datasets: [
+        {
+            fillColor: "#e9e225",
+            strokeColor: "#ffffff",
+            highlightFill: "#ee7f49",
+            highlightStroke: "#ffffff",
+            data: cantidad_mensajes
+        }
+    ]
 
-
-var pieData = [{value: 40, color: "#0b82e7", highlight: "#0c62ab", label: "Google Chrome"},
-    {
-        
-        value: a,
-        color: "#e3e860",
-        highlight: "#a9ad47",
-        label: "Android"
-    },
-    {
-        value: 11,
-        color: "#eb5d82",
-        highlight: "#b74865",
-        label: t1
-    },
-    {
-        value: 10,
-        color: "#5ae85a",
-        highlight: "#42a642",
-        label: "Internet Explorer"
-    },
-    {
-        value: 8.6,
-        color: "#e965db",
-        highlight: "#a6429b",
-        label: "Safari"
-    }
-];
+}
 
 var ctx = document.getElementById("chart-area").getContext("2d");
-window.myPie = new Chart(ctx).Pie(pieData);
-
+window.myPie = new Chart(ctx).Bar(barChartData, {responsive: true});
 
 }

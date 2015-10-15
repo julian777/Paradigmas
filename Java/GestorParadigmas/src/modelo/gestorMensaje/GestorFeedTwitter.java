@@ -72,7 +72,7 @@ public class GestorFeedTwitter {
   //mencionan, esto para poder hacer un grafico de pastel con todos los temas y
     //sus numeros
     
-    public String datosGraficoDosToJSON() {
+        public String datosGraficoDosToJSON() {
 
         ArrayList<Object[]> aa = this.proporcion_pastel();
 
