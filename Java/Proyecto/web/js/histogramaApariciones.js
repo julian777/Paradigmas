@@ -61,6 +61,6 @@ function cargarGrafico() {
     }
 
 
-    var ctx4 = document.getElementById("chart-area90").getContext("2d");
+    var ctx4 = document.getElementById("chart-area8").getContext("2d");
     window.myPie = new Chart(ctx4).Line(lineChartData, {responsive: true});
 }

@@ -25,9 +25,9 @@
         <input id="datosProporcion" hidden name="datosProporcion" type="text" value='<%=datosProporcion%>'/>
 
         <div id="canvas-holder">
-            <canvas id="chart-area" width="600" height="300"></canvas>
+            <canvas id="chart-area2" width="600" height="300"></canvas>
         </div>
-        <script src="js/pastel.js"></script>
+        <script src="js/barrasProporcion.js"></script>
         
     </body>
 </html>

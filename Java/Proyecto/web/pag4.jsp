@@ -19,7 +19,7 @@
         <input id="datosHashtag" hidden name="datosHashtag" type="text" value='<%=datosHashtag%>'/>
 
         <div id="canvas-holder">
-            <canvas id="chart-area2" width="600" height="300"></canvas>
+            <canvas id="chart-area4" width="600" height="300"></canvas>
         </div>
         <script src="js/donaHashtag.js"></script>
     </body>

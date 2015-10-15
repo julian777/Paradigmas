@@ -54,6 +54,6 @@ function cargarGrafico() {
 
     }
 
-    var ctx3 = document.getElementById("chart-area3").getContext("2d");
+    var ctx3 = document.getElementById("chart-area6").getContext("2d");
     window.myPie = new Chart(ctx3).Bar(barChartData, {responsive: true});
 }    

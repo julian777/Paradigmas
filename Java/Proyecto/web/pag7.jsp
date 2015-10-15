@@ -19,7 +19,7 @@
         <input id="datosD" hidden name="datosD" type="text" value='<%=datosD%>'/>
 
         <div id="canvas-holder">
-            <canvas id="chart-area2" width="600" height="300"></canvas>
+            <canvas id="chart-area7" width="600" height="300"></canvas>
         </div>
         
         <script src="js/histogramaDensidad.js"></script>

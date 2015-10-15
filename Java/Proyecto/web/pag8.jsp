@@ -28,7 +28,7 @@
 
 
         <div id="canvas-holder">
-            <canvas id="chart-area90" width="600" height="300"></canvas>
+            <canvas id="chart-area8" width="600" height="300"></canvas>
         </div>
         <script src="js/histogramaApariciones.js"></script>
     </body>

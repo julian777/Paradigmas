@@ -28,7 +28,7 @@
 
 
         <div id="canvas-holder">
-            <canvas id="chart-area4" width="600" height="300"></canvas>
+            <canvas id="chart-area1" width="600" height="300"></canvas>
         </div>
         <script src="js/histogramaAfluencia.js"></script>
     </body>

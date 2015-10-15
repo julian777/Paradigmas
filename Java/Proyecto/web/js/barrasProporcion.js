@@ -58,7 +58,7 @@ var barChartData = {
 
 }
 
-var ctx = document.getElementById("chart-area").getContext("2d");
+var ctx = document.getElementById("chart-area2").getContext("2d");
 window.myPie = new Chart(ctx).Bar(barChartData, {responsive: true});
 
 }

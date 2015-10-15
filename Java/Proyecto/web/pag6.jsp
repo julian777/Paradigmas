@@ -19,7 +19,7 @@
                 <input id="datosUsuario" hidden name="datosUsuario" type="text" value='<%=datosUsuario%>'/>
 
         <div id="canvas-holder">
-            <canvas id="chart-area3" width="600" height="300"></canvas>
+            <canvas id="chart-area6" width="600" height="300"></canvas>
         </div>
                 <script src="js/usuarioBarras.js"></script>
     </body>

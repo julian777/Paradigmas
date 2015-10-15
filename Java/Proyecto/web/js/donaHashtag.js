@@ -52,7 +52,7 @@ function cargarGrafico() {
         }
     ];
 
-    var ctx2 = document.getElementById("chart-area2").getContext("2d");
+    var ctx2 = document.getElementById("chart-area4").getContext("2d");
     window.myPie = new Chart(ctx2).Doughnut(pieData);
 
 
