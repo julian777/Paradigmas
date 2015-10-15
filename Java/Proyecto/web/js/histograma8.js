@@ -38,7 +38,7 @@ function cargarGrafico() {
         
         cantidad_mensajes[i] = vector1[i];
         mensaje[i] = vector2[i];
-        alert(mensaje[i]);
+
          
     }
     
