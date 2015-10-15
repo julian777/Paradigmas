@@ -11,7 +11,7 @@ function init() {
 
     var datos = document.getElementById("datos").value;
     var datosJson = JSON.parse(datos);
-    alert(datosJson);
+ 
     matriz = new Array(datosJson.length);
     for (var i = 0; i < datosJson.length; i++) {
         var str = JSON.stringify(datosJson[i]);

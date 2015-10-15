@@ -18,7 +18,7 @@ function init() {
         res[0] = res[0].replace(patron2, '');
         res[0] = res[0].replace(patron2, '');
         res[2] = res[2].replace(patron3, '');
-        alert(res[0]);
+ 
         vector1[i] = res[1];
         vector[i] = res[2]; 
         vector2[i] = res[0];
