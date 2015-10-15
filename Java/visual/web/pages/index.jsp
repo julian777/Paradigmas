@@ -129,8 +129,7 @@
                                
                                 <canvas id="chart-area1" width="600" height="300"></canvas>
                             </div>
-                             <script src="../js/barrasFrecuencia.js"></script>
-                              <script src="../js/Chart.js"></script>
+                            <script src="../js/Chart.js"></script>
                             
                             <!-- /.panel-body -->
                         </div>
@@ -242,5 +241,7 @@
     <script src="../js/pastelillo.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
-
+    <script>
+        initSalvaje();
+    </script>
 </body>
