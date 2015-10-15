@@ -139,7 +139,7 @@
                                     <div id="canvas-holder">
                                         <canvas id="chart-area3" width="600" height="300"></canvas>
                                     </div>
-                                    <script src="../js/barras.js"></script>
+                                    <script src="../js/barrasFrecuencia.js"></script>
                                     <script src="../js/Chart.js"></script>
 
 
@@ -256,11 +256,8 @@
    <script src="../js/pastelillo2.js"></script>
     -->
     <script src="../js/barrasFrecuencia.js"></script>
-    <script src="../js/barrasProporcion.js"></script>
     <script src="../js/donaHashtag.js"></script>
-    <script src="../js/histogramaAfluencia.js"></script>
     <script src="../js/histogramaApariciones.js"></script>
-    <script src="../js/histogramaDensidad.js"></script>
     <script src="../js/usuarioBarras.js"></script>
     <script src="../js/Chart.js"></script>
     <!-- Custom Theme JavaScript -->
