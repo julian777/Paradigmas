@@ -27,7 +27,6 @@ public class GestorFeedTwitter {
     //con un histograma se puede hacer, horizontal las horas, vertical la cantidad
     //el color los temas
     //tupla: (Horas,cantidad,tema)
-    
     public String datosGraficoUnoToJSON() {
 
         ArrayList<Object[]> aa = this.obtenerHora_Cant_tema_tweet();
@@ -69,10 +68,9 @@ public class GestorFeedTwitter {
     }
 
   //2.Devuelve (cantidad,tema) osea, de los 5 temas dados devuelve cuantas veces se
-  //mencionan, esto para poder hacer un grafico de pastel con todos los temas y
+    //mencionan, esto para poder hacer un grafico de pastel con todos los temas y
     //sus numeros
-    
-        public String datosGraficoDosToJSON() {
+    public String datosGraficoDosToJSON() {
 
         ArrayList<Object[]> aa = this.proporcion_pastel();
 
@@ -116,7 +114,6 @@ public class GestorFeedTwitter {
     //Devuelve (hora,cant_mensajes) se debe graficar en una grafica de barras
     //el primer parametro esta abreviado con el primer simbolo de la hora militar
     //de forma que 13 simboliza la 1:00 pm
-    
     public String datosGraficoTresToJSON() {
 
         ArrayList<Object[]> aa = this.frecuencia_barras();
@@ -162,7 +159,6 @@ public class GestorFeedTwitter {
     //son dos cantidades, se dejo a la libre idear una comparacion en esta parte
     //lo que se planea es hacer una grafica que compare la cantidad de tweets con
     //hastag y los que no lo tienen
-    
     public String datosGraficoCuatroToJSON() {
 
         ArrayList<Object[]> aa = this.Con_o_Sin_Hastag();
@@ -204,14 +200,10 @@ public class GestorFeedTwitter {
     }
 
     //5.0 Hacer un proceso almacenado que me devuelva (Hora,HastagMasUtilizado)
-    
-    
-    
     //5.Proceso almacenado con usuarios con mas post o tweets
     //devuelve todos los usuarios y la cantidad de tweets en orden desc
     //devuelve (usuario,cantidad)
     //la idea es tomar los primeros 10 y graficarlos
-    
     public String datosGraficoCincoToJSON() {
 
         ArrayList<Object[]> aa = this.Usuario_Cant_Tweets();
@@ -255,8 +247,7 @@ public class GestorFeedTwitter {
     //6.Proceso almacenado que devuelve (Hora,cantidad_mensajes,medio)
     //la hora viene abreviada, 13 es 1:00pm, cantidad de mensajes indiferente del tema
     //generados en esa hora, y el medio, en este caso twitter
- 
-        public String datosGraficoSeisToJSON() {
+    public String datosGraficoSeisToJSON() {
 
         ArrayList<Object[]> aa = this.Densidad_Hora_Cant_Medio();
 
@@ -295,6 +286,49 @@ public class GestorFeedTwitter {
 
         return graficoSeis;
     }
+
+    //este metodo devuelve un registro con (Mensaje, cantidad_repeticiones)
+    //esto para comparar en un grafico la cantidad de veces que se repite un hastag
+    public String datosGraficoSieteToJSON() {
+
+        ArrayList<Object[]> aa = this.Mensajes_con_Hastag_Twitter();
+
+        String json = new Gson().toJson(aa);
+
+        System.out.println(json);
+
+        return json;
+
+    }
+
+    public ArrayList<Object[]> Mensajes_con_Hastag_Twitter() {
+        ArrayList<Object[]> graficoSiete = new ArrayList<Object[]>();
+
+        // Abre una conexión a la base de datos y carga la lista de usuarios.
+        GestorBaseDatos bd = null;
+        try {
+            bd = GestorBaseDatos.obtenerInstancia(URL_Servidor);
+            Connection cnx = bd.obtenerConexion(BASE_DATOS, LOGIN, PASSWORD);
+
+            Statement stm = cnx.createStatement();
+            ResultSet rs = stm.executeQuery("{call Mensajes_con_Hastag_Twitter()}");
+            int maxCols = rs.getMetaData().getColumnCount();
+            while (rs.next()) {
+                Object[] registro = new Object[maxCols];
+                for (int i = 0; i < maxCols; i++) {
+                    registro[i] = rs.getObject(i + 1);
+                }
+                graficoSiete.add(registro);
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        } finally {
+            bd.cerrarConexion();
+        }
+
+        return graficoSiete;
+    }
+
     private String URL_Servidor = "localhost";
     private static final String BASE_DATOS = "proyecto";
 
