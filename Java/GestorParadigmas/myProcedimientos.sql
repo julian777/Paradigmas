@@ -66,18 +66,18 @@ DELIMITER ;
 call Con_o_Sin_Hastag();
 
 -- Punto No5.0 obtener todos los mensajes cuyo campo hastag sea = 1 para analizar frecuencias
+-- devuelve dos valores, el hastag y la cantidad que se repite, esto en orde desc
 DELIMITER $$ 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Mensajes_con_Hastag`
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Mensajes_con_Hastag_Twitter`
 ()
 BEGIN 
 
-SELECT Twitter.mensaje FROM Twitter
-where hastag = 1;
+SELECT mensaje, COUNT(mensaje) FROM Twitter where hastag = 1 GROUP BY mensaje order by COUNT(mensaje) desc;
 
 END$$ 
 DELIMITER ;
 
-call Mensajes_con_Hastag();
+call Mensajes_con_Hastag_Twitter();
 
 -- Punto No5 Devuelve un string con usuario y su cantidad de mensajes
 -- ordena a los usuarios con mayor cantidad de mensajes arriba, de forma que
@@ -180,13 +180,13 @@ DELIMITER ;
 call Con_o_Sin_Hastag_facebook();
 
 -- Punto No5.0 obtener todos los mensajes cuyo campo hastag sea = 1 para analizar frecuencias
+-- devuelve cuantas veces se repite este hastag en orde de mayor a menor
 DELIMITER $$ 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Mensajes_con_Hastag_facebook`
 ()
 BEGIN 
 
-SELECT Facebook.mensaje FROM Facebook
-where hastag = 1;
+SELECT mensaje, COUNT(mensaje) FROM Facebook where hastag = 1 GROUP BY mensaje order by COUNT(mensaje) desc;
 
 END$$ 
 DELIMITER ;
