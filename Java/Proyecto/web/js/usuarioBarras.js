@@ -1,7 +1,7 @@
  //devuelve (usuario,cantidad), una muestra de 10
 var matriz;
 
-function init() {
+function initUsuario() {
 
     var patron1 = "[";
     var patron2 = '"';
@@ -25,11 +25,11 @@ function init() {
 
     }
 
-    cargarGrafico();
+    cargarGraficoUsuario();
 
 }
 
-function cargarGrafico() {
+function cargarGraficoUsuario() {
 
     var IDusuario = [];
     var cantidad_mensajes = [];

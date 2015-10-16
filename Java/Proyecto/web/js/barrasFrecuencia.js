@@ -2,7 +2,7 @@
 
 var matriz;
 
-function init() {
+function initFrecuen() {
 
     var patron1 = "[";
     var patron2 = '"';
@@ -26,11 +26,11 @@ function init() {
 
     }
 
-    cargarGrafico();
+    cargarGraficoFrecuen();
 
 }
 
-function cargarGrafico() {
+function cargarGraficoFrecuen() {
 
     var hora = [];
     var cantidad_mensajes = [];
