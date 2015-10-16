@@ -199,7 +199,7 @@ public class GestorFeedTwitter {
         return graficoCuatro;
     }
 
-    //5.0 Hacer un proceso almacenado que me devuelva (Hora,HastagMasUtilizado)
+    
     //5.Proceso almacenado con usuarios con mas post o tweets
     //devuelve todos los usuarios y la cantidad de tweets en orden desc
     //devuelve (usuario,cantidad)

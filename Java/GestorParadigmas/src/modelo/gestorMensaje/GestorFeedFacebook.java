@@ -203,6 +203,8 @@ public class GestorFeedFacebook {
 
         return graficoCuatro;
     }
+    
+    
 
     //5.Proceso almacenado con usuarios con mas post o tweets
     //devuelve todos los usuarios y la cantidad de tweets en orden desc
@@ -292,6 +294,49 @@ public class GestorFeedFacebook {
 
         return graficoSeis;
     }
+    
+        //este metodo devuelve un registro con (Mensaje, cantidad_repeticiones)
+    //esto para comparar en un grafico la cantidad de veces que se repite un hastag
+    public String datosGraficoSieteToJSON() {
+
+        ArrayList<Object[]> aa = this.Mensajes_con_Hastag_facebook();
+
+        String json = new Gson().toJson(aa);
+
+        System.out.println(json);
+
+        return json;
+
+    }
+
+    public ArrayList<Object[]> Mensajes_con_Hastag_facebook() {
+        ArrayList<Object[]> graficoSiete = new ArrayList<Object[]>();
+
+        // Abre una conexión a la base de datos y carga la lista de usuarios.
+        GestorBaseDatos bd = null;
+        try {
+            bd = GestorBaseDatos.obtenerInstancia(URL_Servidor);
+            Connection cnx = bd.obtenerConexion(BASE_DATOS, LOGIN, PASSWORD);
+
+            Statement stm = cnx.createStatement();
+            ResultSet rs = stm.executeQuery("{call Mensajes_con_Hastag_facebook()}");
+            int maxCols = rs.getMetaData().getColumnCount();
+            while (rs.next()) {
+                Object[] registro = new Object[maxCols];
+                for (int i = 0; i < maxCols; i++) {
+                    registro[i] = rs.getObject(i + 1);
+                }
+                graficoSiete.add(registro);
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        } finally {
+            bd.cerrarConexion();
+        }
+
+        return graficoSiete;
+    }
+    
     private String URL_Servidor = "localhost";
     private static final String BASE_DATOS = "proyecto";
 
