@@ -139,7 +139,7 @@
                                     <div id="canvas-holder">
                                         <canvas id="chart-area3F" width="600" height="300"></canvas>
                                     </div>
-                                    <script src="../js/barrasFrecuencia.js"></script>
+                                    <script src="../js/barrasFrecuenciaF.js"></script>
                                     <script src="../js/Chart.js"></script>
 
 
@@ -158,7 +158,7 @@
                             <div id="canvas-holder">
                                 <canvas id="chart-area8F" width="600" height="300"></canvas>
                             </div>
-                            <script src="../js/histogramaApariciones.js" type="text/javascript"></script>
+                            <script src="../js/histogramaAparicionesF.js" type="text/javascript"></script>
                             <script src="../js/Chart.js"></script>
                             <!-- /.panel-body -->
                         </div>
@@ -178,7 +178,7 @@
                                     <div id="canvas-holder">
                                         <canvas id="chart-area6F" width="600" height="300"></canvas>
                                     </div>
-                                    <script src="../js/usuarioBarras.js"></script>
+                                    <script src="../js/usuarioBarrasF.js"></script>
                                     <script src="../js/Chart.js"></script>
 
 
@@ -197,7 +197,7 @@
                                     <div id="canvas-holder">
                                         <canvas id="chart-area11F" width="600" height="300"></canvas>
                                     </div>
-                                    <script src="../js/pastel.js" type="text/javascript"></script>
+                                    <script src="../js/pastelF.js" type="text/javascript"></script>
                                 </div>
                             </div>
                         </div>
@@ -212,7 +212,7 @@
                                     <div id="canvas-holder">
                                         <canvas id="chart-area10F" width="600" height="300"></canvas>
                                     </div>
-                                    <script src="../js/pastelillo.js" type="text/javascript"></script>
+                                    <script src="../js/pastelilloF.js" type="text/javascript"></script>
                                 </div>
                             </div>
                         </div>
@@ -266,10 +266,13 @@
         initUsuarioF();
 
     </script>
-    <script src="../js/barrasFrecuencia.js"></script>
-    <script src="../js/donaHashtag.js"></script>
-    <script src="../js/histogramaApariciones.js"></script>
-    <script src="../js/usuarioBarras.js"></script>
+    <script src="../js/barrasFrecuenciaF.js"></script>
+    <script src="../js/histogramaAparicionesF.js"></script>    
+    <script src="../js/usuarioBarrasF.js"></script>
+    <script src="../js/pastelF.js" type="text/javascript"></script>
+    <script src="../js/pastelilloF.js" type="text/javascript"></script>
+
+
     <script src="../js/Chart.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>

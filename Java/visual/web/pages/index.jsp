@@ -238,8 +238,7 @@
     <script src="../js/histogramaAfluencia.js"></script>
     <script src="../js/histogramaDensidad.js"></script>
     <script src="../js/Chart.js"></script>
-    <script src="../js/pastel.js"></script>
-    <script src="../js/pastelillo.js"></script>
+    <script src="../js/pastel2.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
     <script>
