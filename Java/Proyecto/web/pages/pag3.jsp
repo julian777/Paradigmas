@@ -139,7 +139,7 @@
                                     <div id="canvas-holder">
                                         <canvas id="chart-area3F" width="600" height="300"></canvas>
                                     </div>
-                                    <script src="../js/barrasFrecuenciaF.js"></script>
+                                    <script src="../js/barraFrecuenciaF.js"></script>
                                     <script src="../js/Chart.js"></script>
 
 
@@ -266,7 +266,7 @@
         initUsuarioF();
 
     </script>
-    <script src="../js/barrasFrecuenciaF.js"></script>
+    <script src="../js/barraFrecuenciaF.js"></script>
     <script src="../js/histogramaAparicionesF.js"></script>    
     <script src="../js/usuarioBarrasF.js"></script>
     <script src="../js/pastelF.js" type="text/javascript"></script>
