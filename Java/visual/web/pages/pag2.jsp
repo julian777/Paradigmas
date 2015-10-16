@@ -1,4 +1,6 @@
+<%@page import="modelo.gestorMensaje.GestorFeedFacebook"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Modelo.ModeloFacebook"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,8 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <script src="js/barras.js"></script>
-        <script src="js/Chart.js"></script>
+        <script src="../js/Chart.js"></script>
 
         <title>ParseadorTwitterFacebook</title>
 
@@ -40,6 +41,16 @@
         <![endif]-->
 
     </head>
+
+    <%
+        ModeloFacebook m3 = ModeloFacebook.crearInstancia(null);
+        GestorFeedFacebook gft3 = m3.getgUsuarios();
+        ModeloFacebook.crearInstancia(getServletContext().getInitParameter("URL_servidor"));
+        String datosHistogramaF = gft3.datosGraficoUnoToJSON();
+        String datosProporcionF = ModeloFacebook.getInstancia().getgUsuarios().datosGraficoDosToJSON();
+        String datosDF = ModeloFacebook.getInstancia().getgUsuarios().datosGraficoSeisToJSON();
+        String datosHashtagF = ModeloFacebook.getInstancia().getgUsuarios().datosGraficoCuatroToJSON();
+    %>
 
     <body>
 
@@ -109,28 +120,33 @@
                     <div class="col-lg-8">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> Histograma1
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Horas del día con mayor afluencia de un tema
+
                             </div>
+                            <input id="datosHistogramaF" hidden name="datosHistogramaF" type="text" value='<%=datosHistogramaF%>'/>
                             <!-- /.panel-heading -->
                             <div id="canvas-holder">
-                                <canvas id="chart-area4" width="600" height="300"></canvas>
+
+                                <canvas id="chart-area1F" width="600" height="300"></canvas>
                             </div>
+                            <script src="../js/Chart.js"></script>
+
                             <!-- /.panel-body -->
                         </div>
                         <!-- /.panel -->
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> Grafico de Barras1
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Proporciones de cada tema
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
                                 <div class="row">
+                                    <input id="datosProporcionF" hidden name="datosProporcionF" type="text" value='<%=datosProporcionF%>'/>
 
                                     <div id="canvas-holder">
-                                        <canvas id="chart-area3" width="600" height="300"></canvas>
+                                        <canvas id="chart-area2F" width="600" height="300"></canvas>
                                     </div>
-                                    <script src="../js/barras.js"></script>
-                                    <script src="../js/Chart.js"></script>
+
 
 
                                 </div>
@@ -140,11 +156,12 @@
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> Histograma1
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Densidad de mensajes por hora
                             </div>
+                            <input id="datosDF" hidden name="datosDF" type="text" value='<%=datosDF%>'/>
                             <!-- /.panel-heading -->
                             <div id="canvas-holder">
-                                <canvas id="chart-area5" width="600" height="300"></canvas>
+                                <canvas id="chart-area7F" width="600" height="300"></canvas>
                             </div>
                             <!-- /.panel-body -->
                         </div>
@@ -156,26 +173,29 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div id="canvas-holder">
-                                        <canvas id="chart-area" width="600" height="300"></canvas>
+                                        <canvas id="chart-area6F" width="600" height="300"></canvas>
                                     </div>
+                                    <script src="../js/pastel2F.js" type="text/javascript"></script>
                                 </div>
                             </div>
                         </div>
 
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> Grafico de Dona
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Porcentaje de mensajes con Hashtag y sin Hashtag
                             </div>
+                            <input id="datosHashtagF" hidden name="datosHashtagF" type="text" value='<%=datosHashtagF%>'/>
                             <div class="panel-body">
+
                                 <div class="row">
                                     <div id="canvas-holder">
-                                        <canvas id="chart-area2" width="600" height="300"></canvas>
+                                        <canvas id="chart-area4F" width="600" height="300"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
                 <!-- cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc4 -->
             </div>
@@ -198,7 +218,8 @@
     <!-- Morris Charts JavaScript -->
     <script src="../bower_components/raphael/raphael-min.js"></script>
     <script src="../bower_components/morrisjs/morris.min.js"></script>
-    <script src="../js/morris-data.js"></script>
+    <!--
+    
     <script src="../js/barras.js"></script>
     <script src="../js/barras2.js"></script>
     <script src="../js/barras3.js"></script>
@@ -210,8 +231,20 @@
     <script src="../js/pastel2.js"></script>
     <script src="../js/pastelillo.js"></script>
     <script src="../js/pastelillo2.js"></script>
+    -->
+    <script src="../js/histogramaAfluenciaF.js"></script>
+    <script src="../js/barrasProporcionF.js"></script>
+    <script src="../js/histogramaDensidadF.js"></script>
+    <script src="../js/pastel2F.js"></script>
+    <script src="../js/donaHashtagF.js"></script>
     <script src="../js/Chart.js"></script>
+
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
-
+    <script>
+        initSalvajeF();
+        initDensoF();
+        initDonaF();
+        initProporcionF();
+    </script>
 </body>

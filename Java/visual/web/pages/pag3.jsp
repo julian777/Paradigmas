@@ -1,4 +1,6 @@
+<%@page import="modelo.gestorMensaje.GestorFeedFacebook"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Modelo.ModeloFacebook"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,6 +42,15 @@
         <![endif]-->
 
     </head>
+    <%
+        ModeloFacebook m4 = ModeloFacebook.crearInstancia(null);
+        GestorFeedFacebook gft4 = m4.getgUsuarios();
+        ModeloFacebook.crearInstancia(getServletContext().getInitParameter("URL_servidor"));
+
+        String datosFrecuenciaF = ModeloFacebook.getInstancia().getgUsuarios().datosGraficoTresToJSON();
+        String datosUsuarioF = ModeloFacebook.getInstancia().getgUsuarios().datosGraficoCincoToJSON();
+        String datosAF = gft4.datosGraficoSieteToJSON();
+    %>
 
     <body>
 
@@ -116,16 +127,19 @@
                         <!-- /.panel -->
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> Grafico de Barras
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Frecuencia de mensajes por hora independiente del tema
                             </div>
                             <!-- /.panel-heading -->
+
+                            <input id="datosFrecuenciaF" hidden name="datosFrecuenciaF" type="text" value='<%=datosFrecuenciaF%>'/>
+
                             <div class="panel-body">
                                 <div class="row">
 
                                     <div id="canvas-holder">
-                                        <canvas id="chart-area3" width="600" height="300"></canvas>
+                                        <canvas id="chart-area3F" width="600" height="300"></canvas>
                                     </div>
-                                    <script src="../js/barras.js"></script>
+                                    <script src="../js/barrasFrecuencia.js"></script>
                                     <script src="../js/Chart.js"></script>
 
 
@@ -134,15 +148,18 @@
                             </div>
                             <!-- /.panel-body -->
                         </div>
-
+                        <input id="datosAF" hidden name="datosAF" type="text" value='<%=datosAF%>'/>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> Histograma
+
                             </div>
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Hashtag y su cantidad de apariciones
                             <!-- /.panel-heading -->
                             <div id="canvas-holder">
-                                <canvas id="chart-area4" width="600" height="300"></canvas>
+                                <canvas id="chart-area8F" width="600" height="300"></canvas>
                             </div>
+                            <script src="../js/histogramaApariciones.js" type="text/javascript"></script>
+                            <script src="../js/Chart.js"></script>
                             <!-- /.panel-body -->
                         </div>
 
@@ -150,16 +167,18 @@
                         <!-- /.panel -->
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> Grafico de Barras
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Usuarios con más mensajes
                             </div>
                             <!-- /.panel-heading -->
+                            <input id="datosUsuarioF" hidden name="datosUsuarioF" type="text" value='<%=datosUsuarioF%>'/>
+
                             <div class="panel-body">
                                 <div class="row">
 
                                     <div id="canvas-holder">
-                                        <canvas id="chart-area66" width="600" height="300"></canvas>
+                                        <canvas id="chart-area6F" width="600" height="300"></canvas>
                                     </div>
-                                    <script src="../js/barras3.js"></script>
+                                    <script src="../js/usuarioBarras.js"></script>
                                     <script src="../js/Chart.js"></script>
 
 
@@ -176,8 +195,9 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div id="canvas-holder">
-                                        <canvas id="chart-area" width="600" height="300"></canvas>
+                                        <canvas id="chart-area11F" width="600" height="300"></canvas>
                                     </div>
+                                    <script src="../js/pastel.js" type="text/javascript"></script>
                                 </div>
                             </div>
                         </div>
@@ -190,8 +210,9 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div id="canvas-holder">
-                                        <canvas id="chart-area2" width="600" height="300"></canvas>
+                                        <canvas id="chart-area10F" width="600" height="300"></canvas>
                                     </div>
+                                    <script src="../js/pastelillo.js" type="text/javascript"></script>
                                 </div>
                             </div>
                         </div>
@@ -225,18 +246,30 @@
     <!-- Morris Charts JavaScript -->
     <script src="../bower_components/raphael/raphael-min.js"></script>
     <script src="../bower_components/morrisjs/morris.min.js"></script>
-    <script src="../js/morris-data.js"></script>
-    <script src="../js/barras.js"></script>
-    <script src="../js/barras2.js"></script>
-    <script src="../js/barras3.js"></script>
-    <script src="../js/histograma.js"></script>
-    <script src="../js/histograma1.js"></script>
-    <script src="../js/histograma2.js"></script>
-    <script src="../js/histograma3.js"></script>
-    <script src="../js/pastel.js"></script>
-    <script src="../js/pastel2.js"></script>
-    <script src="../js/pastelillo.js"></script>
-    <script src="../js/pastelillo2.js"></script>
+    <!--
+   <script src="../js/morris-data.js"></script>
+   <script src="../js/barras.js"></script>
+   <script src="../js/barras2.js"></script>
+   <script src="../js/barras3.js"></script>
+   <script src="../js/histograma.js"></script>
+   <script src="../js/histograma1.js"></script>
+   <script src="../js/histograma2.js"></script>
+   <script src="../js/histograma3.js"></script>
+   <script src="../js/pastel.js"></script>
+   <script src="../js/pastel2.js"></script>
+   <script src="../js/pastelillo.js"></script>
+   <script src="../js/pastelillo2.js"></script>
+    -->
+    <script>
+        initFrecuenF();
+        initAparicioF();
+        initUsuarioF();
+
+    </script>
+    <script src="../js/barrasFrecuencia.js"></script>
+    <script src="../js/donaHashtag.js"></script>
+    <script src="../js/histogramaApariciones.js"></script>
+    <script src="../js/usuarioBarras.js"></script>
     <script src="../js/Chart.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
