@@ -3,7 +3,7 @@
 
 var matriz;
 
-function init() {
+function initDona() {
 
     var patron1 = "[";
     var patron2 = '"';
@@ -27,11 +27,11 @@ function init() {
 
     }
 
-    cargarGrafico();
+    cargarGraficoDona();
 
 }
 
-function cargarGrafico() {
+function cargarGraficoDona() {
 
     var sinHastag = [];
     var conHastag = [];
@@ -40,12 +40,15 @@ function cargarGrafico() {
         sinHastag[i] = matriz[i][0];
         conHastag[i] = matriz[i][1];
     }
+    var total = sinHastag * conHastag;
+    var x = (sinHastag*100)/total;
+    var y = (conHastag*100)/total;
 
 
 
-    var pieData = [{value: sinHastag, color: "#0b82e7", highlight: "#0c62ab", label: "Sin Hashtag"},
+    var pieData = [{value: Math.floor(x), color: "#0b82e7", highlight: "#0c62ab", label: "Sin Hashtag"},
         {
-            value: conHastag,
+            value: Math.floor(y),
             color: "#e965db",
             highlight: "#a6429b",
             label: "ConHastag"

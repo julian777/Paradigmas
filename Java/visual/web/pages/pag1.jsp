@@ -151,12 +151,15 @@
                         <input id="datosA" hidden name="datosA" type="text" value='<%=datosA%>'/>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> Hashtag y su cantidad de apariciones
+
                             </div>
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Hashtag y su cantidad de apariciones
                             <!-- /.panel-heading -->
                             <div id="canvas-holder">
                                 <canvas id="chart-area8" width="600" height="300"></canvas>
                             </div>
+                            <script src="../js/histogramaApariciones.js" type="text/javascript"></script>
+                            <script src="../js/Chart.js"></script>
                             <!-- /.panel-body -->
                         </div>
 
@@ -192,8 +195,9 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div id="canvas-holder">
-                                        <canvas id="chart-area" width="600" height="300"></canvas>
+                                        <canvas id="chart-area11" width="600" height="300"></canvas>
                                     </div>
+                                    <script src="../js/pastel.js" type="text/javascript"></script>
                                 </div>
                             </div>
                         </div>
@@ -206,8 +210,9 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div id="canvas-holder">
-                                        <canvas id="chart-area2" width="600" height="300"></canvas>
+                                        <canvas id="chart-area10" width="600" height="300"></canvas>
                                     </div>
+                                    <script src="../js/pastelillo.js" type="text/javascript"></script>
                                 </div>
                             </div>
                         </div>
@@ -255,6 +260,12 @@
    <script src="../js/pastelillo.js"></script>
    <script src="../js/pastelillo2.js"></script>
     -->
+    <script>
+        initFrecuen();
+        initAparicio();
+        initUsuario();
+
+    </script>
     <script src="../js/barrasFrecuencia.js"></script>
     <script src="../js/donaHashtag.js"></script>
     <script src="../js/histogramaApariciones.js"></script>

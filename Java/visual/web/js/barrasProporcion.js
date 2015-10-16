@@ -5,7 +5,7 @@ var t2 = " ",t3 = " ",t4 = " ",t5 = " ";
 var numero = 0;
 
 
-function init() {
+function initProporcion() {
 
     var patron1 = "[";
     var patron2 = '"';
@@ -28,11 +28,11 @@ function init() {
 
     }
 
-    cargarGrafico();
+    cargarGraficoProporcion();
 
 }
 
-function cargarGrafico() {
+function cargarGraficoProporcion() {
 var a;
 var tema = [];
 var cantidad_mensajes = [];

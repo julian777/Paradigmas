@@ -1,7 +1,7 @@
 var vector = [];
 var vector1 = [];
 var vector2 = [];
-function init() {
+function initAparicio() {
 
     var patron1 = "[";
     var patron2 = '"';
@@ -25,11 +25,11 @@ function init() {
 
     }
 
-    cargarGrafico();
+    cargarGraficoAparicio();
 
 }
 
-function cargarGrafico() {
+function cargarGraficoAparicio() {
 
     var mensaje = [];
     var cantidad_mensajes = [];

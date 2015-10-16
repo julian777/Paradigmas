@@ -1,6 +1,6 @@
 var matriz;
 
-function init() {
+function initDenso() {
 
     var patron1 = "[";
     var patron2 = '"';
@@ -27,11 +27,11 @@ function init() {
 
     }
 
-    cargarGrafico();
+    cargarGraficoDenso();
 
 }
 
-function cargarGrafico() {
+function cargarGraficoDenso() {
 
     var hora = [];
     var cantidad_mensajes = [];

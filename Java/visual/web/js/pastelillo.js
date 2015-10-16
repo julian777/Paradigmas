@@ -27,7 +27,7 @@ var pieData = [{value: 40, color: "#0b82e7", highlight: "#0c62ab", label: "Googl
 
 
 
-var ctx2 = document.getElementById("chart-area2").getContext("2d");
+var ctx2 = document.getElementById("chart-area10").getContext("2d");
 window.myPie = new Chart(ctx2).Doughnut(pieData);
 
 

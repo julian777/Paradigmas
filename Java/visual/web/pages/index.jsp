@@ -173,15 +173,16 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div id="canvas-holder">
-                                        <canvas id="chart-area" width="600" height="300"></canvas>
+                                        <canvas id="chart-area6" width="600" height="300"></canvas>
                                     </div>
+                                    <script src="../js/pastel2.js" type="text/javascript"></script>
                                 </div>
                             </div>
                         </div>
 
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> Cantidad de mensajes con Hashtag y sin Hashtag
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Porcentaje de mensajes con Hashtag y sin Hashtag
                             </div>
                             <input id="datosHashtag" hidden name="datosHashtag" type="text" value='<%=datosHashtag%>'/>
                             <div class="panel-body">
@@ -243,5 +244,8 @@
     <script src="../dist/js/sb-admin-2.js"></script>
     <script>
         initSalvaje();
+        initDenso();
+        initDona();
+        initProporcion();
     </script>
 </body>
