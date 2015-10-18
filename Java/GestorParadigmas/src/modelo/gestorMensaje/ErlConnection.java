@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Instrucciones: ir a la terminal y pegar el siguiente comando
+erl -sname enode -setcookie  erlang
+luego ejecutar el main de este ErlConnection.java
  */
 package modelo.gestorMensaje;
 
