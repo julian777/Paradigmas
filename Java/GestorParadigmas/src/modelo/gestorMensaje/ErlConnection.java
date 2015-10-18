@@ -1,11 +1,12 @@
 /*
-Instrucciones: ir a la terminal y pegar el siguiente comando
-erl -sname enode -setcookie  erlang
-luego ejecutar el main de este ErlConnection.java
+ Instrucciones: ir a la terminal y pegar el siguiente comando
+ erl -sname enode -setcookie  erlang
+ luego ejecutar el main de este ErlConnection.java
  */
 package modelo.gestorMensaje;
 
 import com.ericsson.otp.erlang.OtpConnection;
+import com.ericsson.otp.erlang.OtpErlangList;
 import com.ericsson.otp.erlang.OtpErlangObject;
 import com.ericsson.otp.erlang.OtpPeer;
 import com.ericsson.otp.erlang.OtpSelf;
@@ -14,8 +15,6 @@ import com.ericsson.otp.erlang.OtpSelf;
  *
  * @author julian
  */
-
-
 public class ErlConnection {
 
     private static OtpConnection conn;
@@ -25,12 +24,17 @@ public class ErlConnection {
 
     public static void main(String[] args) {
         new ErlConnection("enode", "erlang");
+
     }
+
+    final String user = System.getProperty("user.name");
 
     public ErlConnection(String _peer, String _cookie) {
         peer = _peer;
         cookie = _cookie;
         connect();
+
+        System.out.println("que pasa " + user + "\n");
 
         /*Do Calls to Rpc methods and then close the connection*/
         disconnect();
@@ -44,7 +48,20 @@ public class ErlConnection {
         try {
             OtpSelf self = new OtpSelf(javaClient, cookie.trim());
             OtpPeer other = new OtpPeer(peer.trim());
+
             conn = self.connect(other);
+//los siguiente son metodos que intentan apartir de la coneccion
+// utilizar sendRPC para enviar el nombre modulo,nombre funcion,argumentos
+
+            conn.sendRPC("e99", "mylast", new OtpErlangList("[1,2,3]"));
+            
+
+            String respuesta = conn.receiveRPC().toString();
+
+
+//hay un error en la respuesta: la sentencia RPC está mal redactada
+            System.out.print("ahorita no joven " + respuesta + "....\n");
+
             System.out.println("Connection Established with " + peer + "\n");
         } catch (Exception exp) {
             System.out.println("connection error is :" + exp.toString());
