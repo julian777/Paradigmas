@@ -52,8 +52,10 @@ public class ErlConnection {
             conn = self.connect(other);
 //los siguiente son metodos que intentan apartir de la coneccion
 // utilizar sendRPC para enviar el nombre modulo,nombre funcion,argumentos
-
-            conn.sendRPC("e99", "mylast", new OtpErlangList("[1,2,3]"));
+// conn.sendRPC("spooky_sequence", "sequence", new OtpErlangList("5"));
+// le mando el numero solo, sin parentesis para mandar un parametro
+            
+            conn.sendRPC("spooky_sequence", "sequence", new OtpErlangList("5"));
             
 
             String respuesta = conn.receiveRPC().toString();
