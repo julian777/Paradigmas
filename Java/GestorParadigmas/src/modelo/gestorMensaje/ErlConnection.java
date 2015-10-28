@@ -55,7 +55,7 @@ public class ErlConnection {
 // conn.sendRPC("spooky_sequence", "sequence", new OtpErlangList("5"));
 // le mando el numero solo, sin parentesis para mandar un parametro
             
-            conn.sendRPC("spooky_sequence", "sequence", new OtpErlangList("5"));
+            conn.sendRPC("spooky_sequence", "sequence", new OtpErlangList("2"));
             
 
             String respuesta = conn.receiveRPC().toString();
