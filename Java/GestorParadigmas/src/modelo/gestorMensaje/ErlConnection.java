@@ -5,11 +5,14 @@
  */
 package modelo.gestorMensaje;
 
+import Modelo.ModeloErlang;
 import com.ericsson.otp.erlang.OtpConnection;
 import com.ericsson.otp.erlang.OtpErlangList;
 import com.ericsson.otp.erlang.OtpErlangObject;
 import com.ericsson.otp.erlang.OtpPeer;
 import com.ericsson.otp.erlang.OtpSelf;
+import java.sql.Timestamp;
+import java.util.Calendar;
 
 /**
  *
@@ -21,6 +24,7 @@ public class ErlConnection {
     public OtpErlangObject received;
     private final String peer;
     private final String cookie;
+    private String objeto = "";
 
     public static void main(String[] args) {
         new ErlConnection("enode", "erlang");
@@ -34,9 +38,63 @@ public class ErlConnection {
         cookie = _cookie;
         connect();
 
-        System.out.println("que pasa " + user + "\n");
+        Timestamp hora = new Timestamp(Calendar.getInstance().getTime().getTime());
 
-        /*Do Calls to Rpc methods and then close the connection*/
+        int z = 2;
+        int limite = 2;
+
+        String matriz[][] = new String[z][8];
+
+        int capacidad = z * 10;
+
+        String[] mnesia = new String[capacidad];
+        mnesia = objeto.split(",");
+
+        for (int j = 0; j < z; j++) {
+            for (int k = 0; k < 8; k++) {
+
+                matriz[j][k] = mnesia[limite];
+                limite++;
+
+            }
+            limite++;
+        }
+
+        ModeloErlang almacena = ModeloErlang.crearInstancia(null);
+
+        GestorAlmacenadorErlang gae = almacena.getgUsuarios();
+
+        UsuarioTwitter usr = new UsuarioTwitter();
+
+        String usuario = "";
+        String mensaje = "";
+        String lugar = "";
+        String medio = "";
+        String tema = "";
+        String estado = "";
+        for (int i = 0; i < z; i++) {
+
+            for (int u = 0; u < 8; u++) {
+
+                usuario = matriz[i][0];
+                mensaje = matriz[i][1];
+                lugar = matriz[i][3];
+                medio = matriz[i][5];
+                tema = matriz[i][6];
+                estado = matriz[i][7];
+
+            }
+
+            usr.setUsuario(usuario);
+            usr.setMensaje(mensaje);
+            usr.setHora(hora);
+            usr.setLugar(lugar);
+            usr.setHastag(true);
+            usr.setMedio(medio);
+            usr.setTema(tema);
+            usr.setEstado(estado);
+            gae.registrarUsuarioTwitter(usr);
+        }
         disconnect();
 
     }
@@ -54,15 +112,10 @@ public class ErlConnection {
 // utilizar sendRPC para enviar el nombre modulo,nombre funcion,argumentos
 // conn.sendRPC("spooky_sequence", "sequence", new OtpErlangList("5"));
 // le mando el numero solo, sin parentesis para mandar un parametro
-            
-            conn.sendRPC("spooky_sequence", "sequence", new OtpErlangList("2"));
-            
 
-            String respuesta = conn.receiveRPC().toString();
+            conn.sendRPC("parseador", "select_all_twitter", new OtpErlangList(""));
 
-
-//hay un error en la respuesta: la sentencia RPC está mal redactada
-            System.out.print("ahorita no joven " + respuesta + "....\n");
+            objeto = conn.receiveRPC().toString();
 
             System.out.println("Connection Established with " + peer + "\n");
         } catch (Exception exp) {
