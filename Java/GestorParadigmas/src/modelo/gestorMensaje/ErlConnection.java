@@ -133,4 +133,30 @@ public class ErlConnection {
         System.out.println("Successfuly Disconnected");
     }
 
+    public static OtpConnection getConn() {
+        return conn;
+    }
+
+    public static void setConn(OtpConnection conn) {
+        ErlConnection.conn = conn;
+    }
+
+    public OtpErlangObject getReceived() {
+        return received;
+    }
+
+    public void setReceived(OtpErlangObject received) {
+        this.received = received;
+    }
+
+    public String getObjeto() {
+        return objeto;
+    }
+
+    public void setObjeto(String objeto) {
+        this.objeto = objeto;
+    }
+    
+    
+
 }
