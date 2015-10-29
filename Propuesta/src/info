@@ -1,0 +1,89 @@
+%% un trabajador va a poder:
+
+% el trabajador nos mantendrá persistente
+% mediante el envío de mensajes repetidos hasta un plazo determinado. Será capaz de:
+
+%% un retardo de tiempo,
+%% una dirección (pid) a donde enviarse los mensajes
+%% un mensaje insistente que se enviará en el buzón de proceso, incluyendo la propia pid del cliente para
+poder llamar a ...
+%%... Una función de parada de decir la tarea se lleva a cabo y que el nagger puede dejar de regañar
+
+%% iniciamos la supervisor_sup_s1, iniciamos un hilo al servidor supremo
+
+1> interfaz:start_link().
+{ok,<0.34.0>}
+
+%% Llamo a el supervisor supremo a la funcion Start_pool que me crea una cierta cantidad de trabajadores
+%% les pongo un nombre, cliente, una cantidad, 2, le mando tambien la TUPLA {M,F,A}
+%% que es, el objeto o la parte logica de mi trabajador, osea, mi "clase" trabajador, clientes_workers.erl
+%% el metodo que me inicializa a esa clase, osea start_link, y argumentos vacios porque aun no voy a hacer nada
+%% nada mas lo voy a crear, despues, internamente start_pool lo que va a hacer es asignarme a ese GRUPO
+%% que en este ejemplo lo conforman 2, un supervisor llamado supervisor_s2
+
+2> interfaz:start_pool(cliente,2,{clientes_workers,start_link,[]}).
+{ok,<0.36.0>}
+
+%% llamo a la funcion run, de mi servidor mnesia_serv, le mando a ciente, que es el grupo que YA HE CREADO
+%% en el paso anterior, (Osea, el grupo de trabajadores esta solicitando servicios al mnesia_serv, a la piscina)
+%% quiero meterme a la piscina!! dicen los clientes
+%% si vamos a la funcion run/2 de mnesia_serv que es el que va a meter a la piscina
+%% tiene dos parametros, uno es _From, en el cual ira el nombre que le estamos mandando, osea cliente
+%% este nombre ya fue registrado al crearlo en el paso No2
+%% el otro argumento, es S = #state{limit=N, sup=Sup, refs=R}
+%% esto es que extraigo de ese grupo su limite (2), y la referencia
+
+
+3> interfaz:run(cliente,["Soy java!",10000,10,self()]).
+{ok,<0.40.0>}
+
+%% solicito la informacion que he enviado y me muestra la referencia del hilo y los argumentos
+
+4> flush().
+Shell got {<0.40.0>,"Soy java!"}
+Shell got {<0.40.0>,"Soy java!"}
+ok
+
+%% mando a otro cliente que es "Soy facebook", esta es la tarea que va a tener
+%% y si le doy flush me muestra que esta ahi trabajando, por un tiempo de letargo de 1000 milisegundos
+%% y la cantidad de veces que se va a repetir el mensaje, en este caso 10
+%% y a donde debe ir el mensaje, en este caso a mi
+
+5> interfaz:run(cliente,["Soy facebook!",10000,10,self()]).
+{ok,<0.43.0>}
+6> flush().
+Shell got {<0.43.0>,"Soy facebook!"}
+Shell got {<0.40.0>,"Soy java!"}
+ok
+9> received down msg
+
+
+%% si trato de meter otro sin que los otros cumplan su tarea (recuerda que defini el limite en 2)
+%% entonces me lo niega con noalloc
+
+9> interfaz:run(cliente,["Soy twitter!",10000,10,self()]).
+noalloc
+
+%% ------------------------------------------------------ de forma asincrona seria:
+
+1> interfaz:start_link().
+{ok,<0.34.0>}
+2> interfaz:start_pool(cliente,2,{clientes_workers,start_link,[]}).
+{ok,<0.36.0>}
+3> interfaz:async_queue(cliente,["haga esto",30000,1,self()]).
+ok
+4> interfaz:async_queue(cliente,["haga lo otro",20000,1,self()]).
+{ok,<0.42.0>}
+5> interfaz:async_queue(cliente,["haga mas",20000,1,self()]).
+received down msg
+{ok,<0.44.0>}
+6> received down msg
+6> flush().
+Shell got {<0.41.0>,"Pay the bills"}
+Shell got {<0.42.0>,"Make some noise"}
+ok
+7> received down msg
+7> interfaz:stop_pool(cliente).
+ok
+8> interfaz:stop().
+** exception exit: killed
