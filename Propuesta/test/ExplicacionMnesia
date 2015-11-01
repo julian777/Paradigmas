@@ -1,0 +1,23 @@
+%% esto va en una clase que llama a la clase principal mnesia
+%%levantar mnesia:
+mnesia:start().
+%% direcciona la base de datos a una ruta
+mnesia_monitor:set_env(dir,"/home/julian/Escritorio/PropuestaMNESIA/base").
+%% le cambia el nombre al host para que lo reconozca java
+net_kernel:start([paradigmas, shortnames]).
+%% para setear el cookie
+erlang:set_cookie(node(), erlang).
+%% para verlo:
+erlang:get_cookie().
+%% luego llamo al metodo que lo unico que hace es crear el shema y cargar las tablas
+laclasedondeestalabase:install([node()])
+
+%%.................................................
+
+mnesiaGen_Server:start_link().
+
+mnesiaGen_Server:start().
+
+mnesia:info().
+
+
