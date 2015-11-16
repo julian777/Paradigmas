@@ -13,7 +13,7 @@
 -export([post/3]).
 -export([get/1]).
 -export([response_body/1]).
-
+-export([getjson/1]).
 
 get(URL) -> R = get_aux(URL),
             response_body(R).
@@ -30,4 +30,9 @@ request(Method, Body) -> httpc:request(Method, Body, [], []).
 response_body({ok, { _, _, Body}}) -> Body;
 response_body({error,{A,_,B}}) -> io:format("Error -> ~p, ~p~n",A,B).
 
+getjson([]) -> "{}";
+getjson([H|T]) when H == 123 -> isback(T);
+getjson([H|T]) -> getjson(T).
 
+isback([H|T]) when H == 34 -> "{\""++T;
+isback([H|T]) -> getjson(T).

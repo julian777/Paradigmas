@@ -1,41 +1,22 @@
+% curl --get 'https://api.twitter.com/1.1/search/tweets.json?' --data 'q=RadioMonumental&lang=es&locale=es&count=10&include_entities=false' --header 'Authorization: OAuth oauth_consumer_key=NUu2jpRu3TsltZSnSIAZErFgC, oauth_nonce=d57rUnZ7ZBI, oauth_signature=C5o8PPWFee0vn7xGGK%2BW73oA%2FAM%3D, oauth_signature_method=HMAC-SHA1, oauth_timestamp=1447693196, oauth_token=3653935402-omsVz87Ou5q6FSeoyEjqwBZ5d9BenWxkmWpbwn0, oauth_version=1.0' --verbose
 
+% Cmd = "curl......".   % No usar commilas dobles """"" X 
+% os:cmd(Cmd).
+%
+
+-module(oauth).
+
+-export([prueba/0]).
 %$ make
 %...
 %$ erl -pa ebin -s crypto -s inets
 %...
-%1> Consumer = {"14UM70VqbosMv5HYbW0dT4B0O", "rOmHvLs2jZATgwgzxIlAH5stWLorX3KQDPAjrmh8cn3rdQuvcj", HMAC_SHA1}.
-%...
-%2> RequestTokenURL = "https://twitter.com/oauth/request_token".
-%...
-%3> {ok, RequestTokenResponse} = oauth:get(RequestTokenURL, [], Consumer).
-%...
-%4> RequestTokenParams = oauth:params_decode(RequestTokenResponse).
-%...
-%5> RequestToken = oauth:token(RequestTokenParams).
-%...
-%6> RequestTokenSecret = oauth:token_secret(RequestTokenParams).
-%...
-%7> AccessTokenURL = "https://twitter.com/oauth/access_token".
-%...
-%8> {ok, AccessTokenResponse} = oauth:get(AccessTokenURL, [], Consumer, RequestToken, RequestTokenSecret).
 
-%...
-%9> AccessTokenParams = oauth:params_decode(AccessTokenResponse).
-%...
-%10> AccessToken = "3145489152-aUlBCTAf45tsDBlUFj2Sv49aXcimCqOwewzXO8e".
-%...
-%11> AccessTokenSecret = "2gWfMIx5VHoMDaBfWkPYTeIIA3tG3aB2GsSfA3KtEhrph".
-%...
-%12> URL = "https://api.twitter.com/1.1/favorites/list.json?count=2&amp;screen_name=episod".
-%...
-%13> {ok, Response} = oauth:get(URL, [{"hello", "world"}], Consumer, AccessToken, AccessTokenSecret).
-%...
-%14> oauth:params_decode(Response).
-%...
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
--module(oauth).
+
 
 -export([get/3, get/5, get/6, post/3, post/5, post/6, put/6, put/7, uri/2, header/1,
   sign/6, params_decode/1, token/1, token_secret/1, verify/6]).
@@ -51,6 +32,23 @@
   uri_params_encode/1, uri_params_decode/1]).
 
 -include_lib("public_key/include/public_key.hrl").
+
+prueba() -> 
+	Consumer = {"14UM70VqbosMv5HYbW0dT4B0O", "rOmHvLs2jZATgwgzxIlAH5stWLorX3KQDPAjrmh8cn3rdQuvcj", hmac_sha1},
+	RequestTokenURL = "https://api.twitter.com/oauth/request_token",
+	{ok, RequestTokenResponse} = oauth:get(RequestTokenURL, [], Consumer),
+	RequestTokenParams = oauth:params_decode(RequestTokenResponse),
+	RequestToken = oauth:token(RequestTokenParams),
+	RequestTokenSecret = oauth:token_secret(RequestTokenParams),
+	AccessTokenURL = "https://api.twitter.com/oauth/access_token",
+	{ok, AccessTokenResponse} = oauth:get(AccessTokenURL, [], Consumer, RequestToken, RequestTokenSecret),
+	AccessTokenParams = oauth:params_decode(AccessTokenResponse),
+	AccessToken = oauth:token(AccessTokenParams),
+	AccessTokenSecret = oauth:token_secret(AccessTokenParams),
+	URL = "https://api.twitter.com/1.1/search/tweets.json?q=%23freebandnames&since_id=24012619984051000&max_id=250126199840518145&result_type=mixed&count=4",
+	{ok, Response} = oauth:get(URL, [], Consumer, AccessToken, AccessTokenSecret),
+	oauth:params_decode(Response).
+
 
 get(URL, ExtraParams, Consumer) ->
   get(URL, ExtraParams, Consumer, "", "").
@@ -178,7 +176,7 @@ hmac_sha(Key, Data) ->
     true ->
       crypto:hmac(sha, Key, Data);
     false ->
-      crypto:sha_mac(Key, Data)
+      crypto:hmac(sha, Key, Data)
   end.
 
 rsa_sha1_signature(HttpMethod, URL, Params, Consumer) ->
