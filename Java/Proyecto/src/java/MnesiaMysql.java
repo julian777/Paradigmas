@@ -33,7 +33,8 @@ public class MnesiaMysql extends HttpServlet {
 
             Timestamp hora = new Timestamp(Calendar.getInstance().getTime().getTime());
 
-            int z = 2;
+            int z;
+            z = Integer.parseInt(conectar.getCount().trim());
             int limite = 2;
 
             String matriz[][] = new String[z][8];
