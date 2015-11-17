@@ -42,14 +42,14 @@ public class ErlConnection {
         Timestamp hora = new Timestamp(Calendar.getInstance().getTime().getTime());
 
         int z;
-              
-            z = Integer.parseInt(count.trim());
+
+        z = Integer.parseInt(count.trim());
         int limite = 2;
 
         String matriz[][] = new String[z][8];
 
         int capacidad = z * 10;
-        
+
         String[] mnesia = new String[capacidad];
         mnesia = objeto.split(",");
 
@@ -128,8 +128,7 @@ public class ErlConnection {
             contador = aux.split(",");
             String l = contador[1];
             String f = l.replace('}', '\0');
-            count = (String)f.toString();
-            
+            count = (String) f.toString();
 
             System.out.println("Connection Established with " + peer + "\n");
         } catch (Exception exp) {
@@ -137,6 +136,10 @@ public class ErlConnection {
             exp.printStackTrace();
         }
 
+    }
+
+    public String getCount() {
+        return count;
     }
 
     public void disconnect() {
