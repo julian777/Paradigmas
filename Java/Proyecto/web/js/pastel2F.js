@@ -25,7 +25,7 @@ var pieData20 = [{value: 40, color: "#0b82e7", highlight: "#0c62ab", label: "Goo
     }
 ];
 
-var ctx30 = document.getElementById("chart-area6F").getContext("2d");
+var ctx30 = document.getElementById("chart-area11F").getContext("2d");
 window.myPie = new Chart(ctx30).Pie(pieData20);
 
 

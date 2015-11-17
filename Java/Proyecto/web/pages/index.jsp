@@ -50,6 +50,7 @@
         String datosProporcion = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoDosToJSON();
         String datosD = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoSeisToJSON();
         String datosHashtag = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoCuatroToJSON();
+        String datospastelito = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoOchoToJSON();
     %>
 
     <body>
@@ -121,16 +122,16 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <i class="fa fa-bar-chart-o fa-fw"></i> Horas del día con mayor afluencia de un tema
-                             
+
                             </div>
                             <input id="datosHistograma" hidden name="datosHistograma" type="text" value='<%=datosHistograma%>'/>
                             <!-- /.panel-heading -->
                             <div id="canvas-holder">
-                               
+
                                 <canvas id="chart-area1" width="600" height="300"></canvas>
                             </div>
                             <script src="../js/Chart.js"></script>
-                            
+
                             <!-- /.panel-body -->
                         </div>
                         <!-- /.panel -->
@@ -146,7 +147,7 @@
                                     <div id="canvas-holder">
                                         <canvas id="chart-area2" width="600" height="300"></canvas>
                                     </div>
-                                   
+
 
 
                                 </div>
@@ -168,8 +169,9 @@
 
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> Grafico de Pastel1
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Cantidad de mensajes por tema
                             </div>
+                            <input id="pastell" hidden name="pastell" type="text" value='<%=datospastelito%>'/>
                             <div class="panel-body">
                                 <div class="row">
                                     <div id="canvas-holder">
@@ -246,5 +248,6 @@
         initDenso();
         initDona();
         initProporcion();
+        initMiPastel();
     </script>
 </body>

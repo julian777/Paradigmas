@@ -50,6 +50,7 @@
         String datosProporcionF = ModeloFacebook.getInstancia().getgUsuarios().datosGraficoDosToJSON();
         String datosDF = ModeloFacebook.getInstancia().getgUsuarios().datosGraficoSeisToJSON();
         String datosHashtagF = ModeloFacebook.getInstancia().getgUsuarios().datosGraficoCuatroToJSON();
+        String datospastelitoF = ModeloFacebook.getInstancia().getgUsuarios().datosGraficoOchoToJSONF();
     %>
 
     <body>
@@ -168,14 +169,15 @@
 
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> Grafico de Pastel1
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Cantidad Publicaciones por tema
                             </div>
+                            <input id="pastellF" hidden name="pastellF" type="text" value='<%=datospastelitoF%>'/>
                             <div class="panel-body">
                                 <div class="row">
                                     <div id="canvas-holder">
                                         <canvas id="chart-area6F" width="600" height="300"></canvas>
                                     </div>
-                                    <script src="../js/pastel2F.js" type="text/javascript"></script>
+                                    <script src="../js/pastelF.js" type="text/javascript"></script>
                                 </div>
                             </div>
                         </div>
@@ -235,7 +237,7 @@
     <script src="../js/histogramaAfluenciaF.js"></script>
     <script src="../js/barrasProporcionF.js"></script>
     <script src="../js/histogramaDensidadF.js"></script>
-    <script src="../js/pastel2F.js"></script>
+    <script src="../js/pastelF.js"></script>
     <script src="../js/donaHashtagF.js"></script>
     <script src="../js/Chart.js"></script>
 
@@ -246,5 +248,6 @@
         initDensoF();
         initDonaF();
         initProporcionF();
+        initMiPastelF();
     </script>
 </body>
