@@ -1,5 +1,5 @@
 package modelo.gestorMensaje;
-
+// erl -sname fnode -setcookie  ferlang
 import Modelo.ModeloErlang;
 import com.ericsson.otp.erlang.OtpConnection;
 import com.ericsson.otp.erlang.OtpErlangList;
@@ -19,7 +19,7 @@ public class ErlConnectionFace {
     private String count;
 
     public static void main(String[] args) {
-        new ErlConnection("enode", "erlang");
+        new ErlConnection("fnode", "ferlang");
 
     }
 
@@ -32,63 +32,67 @@ public class ErlConnectionFace {
 
         Timestamp hora = new Timestamp(Calendar.getInstance().getTime().getTime());
 
-        int z;
-
-        z = Integer.parseInt(count.trim());
-        int limite = 2;
-
-        String matriz[][] = new String[z][8];
-
-        int capacidad = z * 10;
-
-        String[] mnesia = new String[capacidad];
-        mnesia = objeto.split(",");
-
-        for (int j = 0; j < z; j++) {
-            for (int k = 0; k < 8; k++) {
-
-                matriz[j][k] = mnesia[limite];
-                limite++;
-
-            }
-            limite++;
-        }
-
-        ModeloErlang almacena = ModeloErlang.crearInstancia(null);
-
-        GestorAlmacenadorErlang gae = almacena.getgUsuarios();
-
-        UsuarioFacebook usr = new UsuarioFacebook();
-
-        String usuario = "";
-        String mensaje = "";
-        String lugar = "";
-        String medio = "";
-        String tema = "";
-        String estado = "";
-        for (int i = 0; i < z; i++) {
-
-            for (int u = 0; u < 8; u++) {
-
-                usuario = matriz[i][0];
-                mensaje = matriz[i][1];
-                lugar = matriz[i][3];
-                medio = matriz[i][5];
-                tema = matriz[i][6];
-                estado = matriz[i][7];
-
-            }
-
-            usr.setUsuario(usuario);
-            usr.setMensaje(mensaje);
-            usr.setHora(hora);
-            usr.setLugar(lugar);
-            usr.setHastag(true);
-            usr.setMedio(medio);
-            usr.setTema(tema);
-            usr.setEstado(estado);
-            gae.registrarUsuarioFacebook(usr);
-        }
+        System.out.println("ver " +objeto+ "\n");
+//        int z;
+//
+//        z = Integer.parseInt(count.trim());
+//        int limite = 2;
+//
+//        String matriz[][] = new String[z][9];
+//
+//        int capacidad = z * 10;
+//
+//        String[] mnesia = new String[capacidad];
+//        mnesia = objeto.split(",");
+//
+//        for (int j = 0; j < z; j++) {
+//            for (int k = 0; k < 9; k++) {
+//
+//                matriz[j][k] = mnesia[limite];
+//                limite++;
+//
+//            }
+//            limite++;
+//        }
+//
+//        ModeloErlang almacena = ModeloErlang.crearInstancia(null);
+//
+//        GestorAlmacenadorErlang gae = almacena.getgUsuarios();
+//
+//        UsuarioFacebook usr = new UsuarioFacebook();
+//
+//        String id = "";
+//        String usuario = "";
+//        String mensaje = "";
+//        String lugar = "";
+//        String medio = "";
+//        String tema = "";
+//        String estado = "";
+//        for (int i = 0; i < z; i++) {
+//
+//            for (int u = 0; u < 9; u++) {
+//
+//                id = matriz[i][0];
+//                usuario = matriz[i][1];
+//                mensaje = matriz[i][2];
+//                lugar = matriz[i][4];
+//                medio = matriz[i][6];
+//                tema = matriz[i][7];
+//                estado = matriz[i][8];
+//
+//            }
+//
+//            usr.setId(id);
+//            usr.setUsuario(usuario);
+//            usr.setMensaje(mensaje);
+//            usr.setHora(hora);
+//            usr.setLugar(lugar);
+//            usr.setHastag(true);
+//            usr.setMedio(medio);
+//            usr.setTema(tema);
+//            usr.setEstado(estado);
+//            gae.registrarUsuarioFacebook(usr);
+//        }
         disconnect();
 
     }
@@ -96,7 +100,7 @@ public class ErlConnectionFace {
     private void connect() {
         System.out.print("Please wait, connecting to " + peer + "....\n");
 
-        String javaClient = "java";
+        String javaClient = "java2";
         try {
             OtpSelf self = new OtpSelf(javaClient, cookie.trim());
             OtpPeer other = new OtpPeer(peer.trim());
@@ -111,15 +115,18 @@ public class ErlConnectionFace {
 
             objeto = conn.receiveRPC().toString();
 
-            conn.sendRPC("parseador", "select_count", new OtpErlangList(""));
-
-            String aux = conn.receiveRPC().toString();
-
-            String[] contador = new String[2];
-            contador = aux.split(",");
-            String l = contador[1];
-            String f = l.replace('}', '\0');
-            count = (String) f.toString();
+            
+//            conn.sendRPC("parseador", "select_count", new OtpErlangList(""));
+//
+//            String aux = conn.receiveRPC().toString();
+//
+//            
+//            
+//            String[] contador = new String[2];
+//            contador = aux.split(",");
+//            String l = contador[1];
+//            String f = l.replace('}', '\0');
+//            count = (String) f.toString();
 
             System.out.println("Connection Established with " + peer + "\n");
         } catch (Exception exp) {

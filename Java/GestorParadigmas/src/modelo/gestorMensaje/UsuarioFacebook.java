@@ -14,8 +14,9 @@ import java.util.Calendar;
  * @author julian
  */
 public class UsuarioFacebook {
-    public UsuarioFacebook(String usuario, String mensaje, Timestamp hora,
+    public UsuarioFacebook(String id,String usuario, String mensaje, Timestamp hora,
             String lugar, boolean hastag, String medio, String tema, String estado) {
+        this.id = id;
         this.usuario = usuario;
         this.mensaje = mensaje;
         this.hora = hora;
@@ -28,27 +29,29 @@ public class UsuarioFacebook {
     }
 
     public UsuarioFacebook() {
-        this("undefined", "undefined", new Timestamp(Calendar.getInstance().getTime().getTime()),
+        this("undefined","undefined", "undefined", new Timestamp(Calendar.getInstance().getTime().getTime()),
                 "undefined", false, "undefined", "undefined", "undefined");
     }
 //recibe array de string con los datos, extrae e instancia el objeto con lo q le pasé
     public static UsuarioFacebook fromArray(ArrayList<String> datos) {
 
-        String usuario = datos.get(0);
-        String mensaje = datos.get(1);
-        Timestamp hora = Timestamp.valueOf(datos.get(2));
-        String lugar = datos.get(3);
-        boolean hastag = Boolean.parseBoolean(datos.get(4));
-        String medio = datos.get(5);
-        String tema = datos.get(6);
-        String estado = datos.get(7);
+        String id = datos.get(0);
+        String usuario = datos.get(1);
+        String mensaje = datos.get(2);
+        Timestamp hora = Timestamp.valueOf(datos.get(3));
+        String lugar = datos.get(4);
+        boolean hastag = Boolean.parseBoolean(datos.get(5));
+        String medio = datos.get(6);
+        String tema = datos.get(7);
+        String estado = datos.get(8);
 
-        return new UsuarioFacebook(usuario, mensaje, hora, lugar, hastag, medio, tema, estado);
+        return new UsuarioFacebook(id,usuario, mensaje, hora, lugar, hastag, medio, tema, estado);
     }
 
     //el gestor lo consulta para insertar datos en la base
     public ArrayList<Object> toArray() {
         ArrayList r = new ArrayList();
+        r.add(getId());
         r.add(getUsuario());
         r.add(getMensaje());
         r.add(getHora());
@@ -129,6 +132,15 @@ public class UsuarioFacebook {
         this.hastag = hastag;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private String id;
     private String usuario;
     private String mensaje;
     private String lugar;
