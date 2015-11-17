@@ -141,6 +141,19 @@ DELIMITER ;
 
 call lugarCantidadTwitter();
 
+DELIMITER $$ 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `estado_animo`
+()
+BEGIN 
+
+select COUNT(estado) negativo,(select COUNT(estado) from Twitter where estado = '-') positivo
+from Twitter where estado = '+';
+
+END$$ 
+DELIMITER ;
+
+call estado_animo();
+
 
 -- FACEBOOKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
 
@@ -284,4 +297,18 @@ END$$
 DELIMITER ;
 
 call lugarCantidad();
+
+DELIMITER $$ 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `estado_animoF`
+()
+BEGIN 
+
+select COUNT(estado) negativo,(select COUNT(estado) from Facebook where estado = '-') positivo
+from Twitter where estado = '+';
+
+END$$ 
+DELIMITER ;
+
+call estado_animoF();
+
 
