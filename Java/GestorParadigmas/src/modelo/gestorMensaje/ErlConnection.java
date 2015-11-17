@@ -25,6 +25,7 @@ public class ErlConnection {
     private final String peer;
     private final String cookie;
     private String objeto = "";
+    private String count;
 
     public static void main(String[] args) {
         new ErlConnection("enode", "erlang");
@@ -40,13 +41,15 @@ public class ErlConnection {
 
         Timestamp hora = new Timestamp(Calendar.getInstance().getTime().getTime());
 
-        int z = 2;
+        int z;
+              
+            z = Integer.parseInt(count.trim());
         int limite = 2;
 
         String matriz[][] = new String[z][8];
 
         int capacidad = z * 10;
-
+        
         String[] mnesia = new String[capacidad];
         mnesia = objeto.split(",");
 
@@ -117,6 +120,17 @@ public class ErlConnection {
 
             objeto = conn.receiveRPC().toString();
 
+            conn.sendRPC("parseador", "select_count", new OtpErlangList(""));
+
+            String aux = conn.receiveRPC().toString();
+
+            String[] contador = new String[2];
+            contador = aux.split(",");
+            String l = contador[1];
+            String f = l.replace('}', '\0');
+            count = (String)f.toString();
+            
+
             System.out.println("Connection Established with " + peer + "\n");
         } catch (Exception exp) {
             System.out.println("connection error is :" + exp.toString());
@@ -156,7 +170,5 @@ public class ErlConnection {
     public void setObjeto(String objeto) {
         this.objeto = objeto;
     }
-    
-    
 
 }
