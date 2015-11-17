@@ -11,7 +11,7 @@
                    tema,
                    estado}).
 
--record(facebook, {usuario,
+-record(facebook, {id,usuario,
                    mensaje,
                    hora,
                    lugar,

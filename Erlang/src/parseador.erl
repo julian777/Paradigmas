@@ -3,7 +3,7 @@
 -export([insert_twitter/8]).
 -export([select_all_twitter/0]).
 -export([select_patron_twitter/1]).
--export([insert_facebook/8]).
+-export([insert_facebook/9]).
 -export([select_all_facebook/0]).
 -export([select_patron_facebook/1]).
 -export([select_eat_prolog/1,select_count/0]).
@@ -87,10 +87,11 @@ select_eat_prolog( Name ) ->
 %area facebook
 
 %metodo insertar a tabla facebook
-insert_facebook(Usuario,Mensaje,Hora,Lugar,Hashtag,Medio,Tema,Estado) ->
+insert_facebook(ID,Usuario,Mensaje,Hora,Lugar,Hashtag,Medio,Tema,Estado) ->
     Fun = fun() ->
          mnesia:write(
-         #facebook{ usuario = Usuario,
+         #facebook{ id = ID, 
+                   usuario = Usuario,
                    mensaje = Mensaje,
                    hora = Hora,
                    lugar = Lugar,
