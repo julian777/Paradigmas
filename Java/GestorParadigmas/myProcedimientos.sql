@@ -128,6 +128,20 @@ DELIMITER ;
 call pastelito();
 
 
+DELIMITER $$ 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `lugarCantidadTwitter`
+()
+BEGIN 
+
+SELECT COUNT(*) Cantidad_Mensajes, lugar Lugar FROM Twitter
+GROUP BY HOUR(hora);
+
+END$$ 
+DELIMITER ;
+
+call lugarCantidadTwitter();
+
+
 -- FACEBOOKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
 
 -- Punto No1 grafica
@@ -258,4 +272,16 @@ DELIMITER ;
 call pastelitoF();
 
 
+DELIMITER $$ 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `lugarCantidad`
+()
+BEGIN 
+
+SELECT COUNT(*) Cantidad_Mensajes, lugar Lugar FROM Facebook
+GROUP BY HOUR(hora);
+
+END$$ 
+DELIMITER ;
+
+call lugarCantidad();
 
