@@ -25,6 +25,7 @@ public class GestorAlmacenadorErlang {
 
     //un registraFacebook, otro registraTwitter
     public boolean registrarUsuarioTwitter(UsuarioTwitter nuevoUsuario) {
+
         boolean exito = false;
         int registrosActualizados = 0;
         GestorBaseDatos bd = null;
@@ -60,6 +61,8 @@ public class GestorAlmacenadorErlang {
     }
 
     public boolean registrarUsuarioFacebook(UsuarioFacebook nuevoUsuario) {
+
+        System.out.println("Cooooooooooooooooooooooooooooooooooooooooooooooooo");
         boolean exito = false;
         int registrosActualizados = 0;
         GestorBaseDatos bd = null;
