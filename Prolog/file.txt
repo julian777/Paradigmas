@@ -1,0 +1,70 @@
+
+#include <stdlib.h>
+#include <stdio.h>
+
+char* getString(char* s){
+    int i;
+    for(i=0;s[i]!='\0';i++){
+        if(s[i]==','){
+            s[i--]='\0';
+        }
+    }
+    return s;
+}
+
+int main(){
+    FILE * fp;
+
+    char * line = (char*)calloc(30,sizeof(char));
+    size_t len = 0;
+    ssize_t read;
+
+
+    
+    FILE *f = fopen("diccionario.pl", "w");
+    if (f == NULL){
+        printf("Error opening file output!\n");
+        exit(1);
+    }
+    int d=0; 
+    fp = fopen("religion.txt", "r");
+    if (fp == NULL)
+        exit(EXIT_FAILURE);
+       
+    while ((fscanf(fp,"%s,%d",line,&d)) != EOF) {
+        fprintf(f, "word(\"%s\",\"religion\").\n", getString(line));
+        printf("word(\"%s\",\"religion\").\n", getString(line));
+    }
+    fclose(fp);
+    fp = fopen("futbol.txt", "r");
+    if (fp == NULL)
+        exit(EXIT_FAILURE);
+       
+    while ((fscanf(fp,"%s,%d",line,&d))!=EOF) {
+        fprintf(f, "word(\"%s\",\"futbol\").\n", getString(line));
+        printf("word(\"%s\",\"futbol\").\n", getString(line));
+    }
+    fclose(fp);
+    fp = fopen("politica.txt", "r");
+    if (fp == NULL)
+        exit(EXIT_FAILURE);
+       
+    while ((fscanf(fp,"%s,%d",line,&d)) != EOF) {
+        fprintf(f, "word(\"%s\",\"politica\").\n", getString(line));
+        printf("word(\"%s\",\"politica\").\n", getString(line));
+    }
+    fclose(fp);
+    fp = fopen("chistes.txt", "r");
+    if (fp == NULL)
+        exit(EXIT_FAILURE);
+       
+    while ((fscanf(fp,"%s,%d",line,&d)) != EOF) {
+        fprintf(f, "word(\"%s\",\"chistes\").\n", getString(line));
+        printf("word(\"%s\",\"chistes\").\n", getString(line));
+    }
+    fclose(f);
+    fclose(fp);
+    if (line)
+        free(line);
+    return 0;
+}
