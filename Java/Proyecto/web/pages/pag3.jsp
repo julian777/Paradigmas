@@ -50,6 +50,7 @@
         String datosFrecuenciaF = ModeloFacebook.getInstancia().getgUsuarios().datosGraficoTresToJSON();
         String datosUsuarioF = ModeloFacebook.getInstancia().getgUsuarios().datosGraficoCincoToJSON();
         String datosAF = gft4.datosGraficoSieteToJSON();
+         String cantidadf = gft4.datosGraficoNueveToJSONF();
     %>
 
     <body>
@@ -192,6 +193,7 @@
                             <div class="panel-heading">
                                 <i class="fa fa-bar-chart-o fa-fw"></i> Grafico de Pastel
                             </div>
+                            <input id="cantidadF" hidden name="cantidadF" type="text" value='<%=cantidadf%>'/>
                             <div class="panel-body">
                                 <div class="row">
                                     <div id="canvas-holder">
@@ -264,6 +266,7 @@
         initFrecuenF();
         initAparicioF();
         initUsuarioF();
+        initMiCantidadF();
 
     </script>
     <script src="../js/barraFrecuenciaF.js"></script>

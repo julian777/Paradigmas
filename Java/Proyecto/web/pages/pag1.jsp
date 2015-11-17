@@ -50,6 +50,7 @@
         String datosFrecuencia = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoTresToJSON();
         String datosUsuario = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoCincoToJSON();
         String datosA = gft2.datosGraficoSieteToJSON();
+        String cantidad = gft2.datosGraficoNueveToJSON();
     %>
 
     <body>
@@ -190,8 +191,9 @@
 
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> Grafico de Pastel
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Cantidad de mensajes por lugar
                             </div>
+                            <input id="cantidad" hidden name="cantidad" type="text" value='<%=cantidad%>'/>
                             <div class="panel-body">
                                 <div class="row">
                                     <div id="canvas-holder">
@@ -264,6 +266,7 @@
         initFrecuen();
         initAparicio();
         initUsuario();
+        initMiCantidad();
 
     </script>
     <script src="../js/barrasFrecuencia.js"></script>
