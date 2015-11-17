@@ -1,36 +1,61 @@
-var pieData = [{value: 40, color: "#0b82e7", highlight: "#0c62ab", label: "Google Chrome"},
-    {
-        value: 16,
-        color: "#e3e860",
-        highlight: "#a9ad47",
-        label: "Android"
-    },
-    {
-        value: 11,
-        color: "#eb5d82",
-        highlight: "#b74865",
-        label: "Firefox"
-    },
-    {
-        value: 10,
-        color: "#5ae85a",
-        highlight: "#42a642",
-        label: "Internet Explorer"
-    },
-    {
-        value: 8.6,
-        color: "#e965db",
-        highlight: "#a6429b",
-        label: "Safari"
+var matriz;
+
+function initAnimo() {
+
+    var patron1 = "[";
+    var patron2 = '"';
+    var patron3 = "]";
+
+    var datos = document.getElementById("animo").value;
+    var datosJson = JSON.parse(datos);
+ 
+    matriz = new Array(datosJson.length);
+    for (var i = 0; i < datosJson.length; i++) {
+        var str = JSON.stringify(datosJson[i]);
+        var res = str.split(",");
+
+        res[0] = res[0].replace(patron1, '');
+        res[1] = res[1].replace(patron3, '');
+
+        matriz[i] = new Array(2);
+
+        matriz[i][0] = res[0];
+        matriz[i][1] = res[1];
+
     }
-];
+
+    cargarGraficoAnimo();
+
+}
+
+function cargarGraficoAnimo() {
+
+    var sinHastag = [];
+    var conHastag = [];
+
+    for (var i = 0; i < matriz.length; i++) {
+        sinHastag[i] = matriz[i][0];
+        conHastag[i] = matriz[i][1];
+    }
+    var total = sinHastag * conHastag;
+    var x = (sinHastag*100)/total;
+    var y = (conHastag*100)/total;
 
 
+
+    var pieData = [{value: Math.floor(x), color: "#0b82e7", highlight: "#0c62ab", label: "Negatividad"},
+        {
+            value: Math.floor(y),
+            color: "#e965db",
+            highlight: "#a6429b",
+            label: "Positivismo"
+        }
+    ];
 
 var ctx2 = document.getElementById("chart-area10").getContext("2d");
 window.myPie = new Chart(ctx2).Doughnut(pieData);
 
-
+}
 
 
 

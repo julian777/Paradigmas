@@ -51,6 +51,7 @@
         String datosUsuario = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoCincoToJSON();
         String datosA = gft2.datosGraficoSieteToJSON();
         String cantidad = gft2.datosGraficoNueveToJSON();
+        String datosAnimo = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoDiezToJSON();
     %>
 
     <body>
@@ -207,8 +208,9 @@
 
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> Grafico de Dona
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Estado de Animo Twitter
                             </div>
+                            <input id="animo" hidden name="animo" type="text" value='<%=datosAnimo%>'/>
                             <div class="panel-body">
                                 <div class="row">
                                     <div id="canvas-holder">
@@ -267,6 +269,7 @@
         initAparicio();
         initUsuario();
         initMiCantidad();
+        initAnimo();
 
     </script>
     <script src="../js/barrasFrecuencia.js"></script>

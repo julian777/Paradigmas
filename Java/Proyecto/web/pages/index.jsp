@@ -51,6 +51,7 @@
         String datosD = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoSeisToJSON();
         String datosHashtag = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoCuatroToJSON();
         String datospastelito = ModeloTwitter.getInstancia().getgUsuarios().datosGraficoOchoToJSON();
+        
     %>
 
     <body>

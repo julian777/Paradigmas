@@ -50,7 +50,8 @@
         String datosFrecuenciaF = ModeloFacebook.getInstancia().getgUsuarios().datosGraficoTresToJSON();
         String datosUsuarioF = ModeloFacebook.getInstancia().getgUsuarios().datosGraficoCincoToJSON();
         String datosAF = gft4.datosGraficoSieteToJSON();
-         String cantidadf = gft4.datosGraficoNueveToJSONF();
+        String cantidadf = gft4.datosGraficoNueveToJSONF();
+        String datosAnimoF = ModeloFacebook.getInstancia().getgUsuarios().datosGraficoDiezToJSONF();
     %>
 
     <body>
@@ -207,8 +208,9 @@
 
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> Grafico de Dona
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Estado Animo Facebook
                             </div>
+                            <input id="animoF" hidden name="animoF" type="text" value='<%=datosAnimoF%>'/>
                             <div class="panel-body">
                                 <div class="row">
                                     <div id="canvas-holder">
@@ -267,6 +269,7 @@
         initAparicioF();
         initUsuarioF();
         initMiCantidadF();
+        initAnimoF();
 
     </script>
     <script src="../js/barraFrecuenciaF.js"></script>
