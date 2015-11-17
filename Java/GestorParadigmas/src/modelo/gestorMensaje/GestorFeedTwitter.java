@@ -370,6 +370,46 @@ public class GestorFeedTwitter {
     }
 
     
+    public String datosGraficoNueveToJSON() {
+
+        ArrayList<Object[]> aa = this.LugarCant();
+
+        String json = new Gson().toJson(aa);
+
+        System.out.println(json);
+
+        return json;
+
+    }
+
+    public ArrayList<Object[]> LugarCant() {
+        ArrayList<Object[]> graficoCuatro = new ArrayList<Object[]>();
+
+        // Abre una conexión a la base de datos y carga la lista de usuarios.
+        GestorBaseDatos bd = null;
+        try {
+            bd = GestorBaseDatos.obtenerInstancia(URL_Servidor);
+            Connection cnx = bd.obtenerConexion(BASE_DATOS, LOGIN, PASSWORD);
+
+            Statement stm = cnx.createStatement();
+            ResultSet rs = stm.executeQuery("{call lugarCantidadTwitter()}");
+            int maxCols = rs.getMetaData().getColumnCount();
+            while (rs.next()) {
+                Object[] registro = new Object[maxCols];
+                for (int i = 0; i < maxCols; i++) {
+                    registro[i] = rs.getObject(i + 1);
+                }
+                graficoCuatro.add(registro);
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        } finally {
+            bd.cerrarConexion();
+        }
+
+        return graficoCuatro;
+    }
+
     
     
     

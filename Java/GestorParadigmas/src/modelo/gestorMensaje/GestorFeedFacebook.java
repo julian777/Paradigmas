@@ -9,7 +9,6 @@ package modelo.gestorMensaje;
  *
  * @author julian
  */
-
 import com.google.gson.Gson;
 import java.util.*;
 import java.sql.*;
@@ -18,8 +17,8 @@ import modelo.baseDatos.*;
 import java.sql.Connection;
 
 public class GestorFeedFacebook {
-    
-     public GestorFeedFacebook(String nuevoServidor) {
+
+    public GestorFeedFacebook(String nuevoServidor) {
         URL_Servidor = nuevoServidor;
         //localhost
     }
@@ -28,7 +27,6 @@ public class GestorFeedFacebook {
     //con un histograma se puede hacer, horizontal las horas, vertical la cantidad
     //el color los temas
     //tupla: (Horas,cantidad,tema)
-    
     public String datosGraficoUnoToJSON() {
 
         ArrayList<Object[]> aa = this.obtenerHora_Cant_tema_Post();
@@ -70,9 +68,8 @@ public class GestorFeedFacebook {
     }
 
   //2.Devuelve (cantidad,tema) osea, de los 5 temas dados devuelve cuantas veces se
-  //mencionan, esto para poder hacer un grafico de pastel con todos los temas y
+    //mencionan, esto para poder hacer un grafico de pastel con todos los temas y
     //sus numeros
-    
     public String datosGraficoDosToJSON() {
 
         ArrayList<Object[]> aa = this.proporcion_pastel_facebook();
@@ -117,7 +114,6 @@ public class GestorFeedFacebook {
     //Devuelve (hora,cant_mensajes) se debe graficar en una grafica de barras
     //el primer parametro esta abreviado con el primer simbolo de la hora militar
     //de forma que 13 simboliza la 1:00 pm
-    
     public String datosGraficoTresToJSON() {
 
         ArrayList<Object[]> aa = this.frecuencia_barras_facebook();
@@ -163,7 +159,6 @@ public class GestorFeedFacebook {
     //son dos cantidades, se dejo a la libre idear una comparacion en esta parte
     //lo que se planea es hacer una grafica que compare la cantidad de tweets con
     //hastag y los que no lo tienen
-    
     public String datosGraficoCuatroToJSON() {
 
         ArrayList<Object[]> aa = this.Con_o_Sin_Hastag_facebook();
@@ -203,14 +198,11 @@ public class GestorFeedFacebook {
 
         return graficoCuatro;
     }
-    
-    
 
     //5.Proceso almacenado con usuarios con mas post o tweets
     //devuelve todos los usuarios y la cantidad de tweets en orden desc
     //devuelve (usuario,cantidad)
     //la idea es tomar los primeros 10 y graficarlos
-    
     public String datosGraficoCincoToJSON() {
 
         ArrayList<Object[]> aa = this.Usuario_Cant_Post();
@@ -254,8 +246,7 @@ public class GestorFeedFacebook {
     //6.Proceso almacenado que devuelve (Hora,cantidad_mensajes,medio)
     //la hora viene abreviada, 13 es 1:00pm, cantidad de mensajes indiferente del tema
     //generados en esa hora, y el medio, en este caso twitter
- 
-        public String datosGraficoSeisToJSON() {
+    public String datosGraficoSeisToJSON() {
 
         ArrayList<Object[]> aa = this.Densidad_Hora_Cant_Medio_Facebook();
 
@@ -294,8 +285,8 @@ public class GestorFeedFacebook {
 
         return graficoSeis;
     }
-    
-        //este metodo devuelve un registro con (Mensaje, cantidad_repeticiones)
+
+    //este metodo devuelve un registro con (Mensaje, cantidad_repeticiones)
     //esto para comparar en un grafico la cantidad de veces que se repite un hastag
     public String datosGraficoSieteToJSON() {
 
@@ -336,9 +327,8 @@ public class GestorFeedFacebook {
 
         return graficoSiete;
     }
-    
-    
-        public String datosGraficoOchoToJSONF() {
+
+    public String datosGraficoOchoToJSONF() {
 
         ArrayList<Object[]> aa = this.PastelitoF();
 
@@ -377,11 +367,51 @@ public class GestorFeedFacebook {
 
         return graficoCuatro;
     }
-    
+
+    public String datosGraficoNueveToJSONF() {
+
+        ArrayList<Object[]> aa = this.LugarCantF();
+
+        String json = new Gson().toJson(aa);
+
+        System.out.println(json);
+
+        return json;
+
+    }
+
+    public ArrayList<Object[]> LugarCantF() {
+        ArrayList<Object[]> graficoCuatro = new ArrayList<Object[]>();
+
+        // Abre una conexión a la base de datos y carga la lista de usuarios.
+        GestorBaseDatos bd = null;
+        try {
+            bd = GestorBaseDatos.obtenerInstancia(URL_Servidor);
+            Connection cnx = bd.obtenerConexion(BASE_DATOS, LOGIN, PASSWORD);
+
+            Statement stm = cnx.createStatement();
+            ResultSet rs = stm.executeQuery("{call lugarCantidad()}");
+            int maxCols = rs.getMetaData().getColumnCount();
+            while (rs.next()) {
+                Object[] registro = new Object[maxCols];
+                for (int i = 0; i < maxCols; i++) {
+                    registro[i] = rs.getObject(i + 1);
+                }
+                graficoCuatro.add(registro);
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        } finally {
+            bd.cerrarConexion();
+        }
+
+        return graficoCuatro;
+    }
+
     private String URL_Servidor = "localhost";
     private static final String BASE_DATOS = "proyecto";
 
     private static final String LOGIN = "root";
     private static final String PASSWORD = "root";
-    
+
 }
