@@ -329,6 +329,50 @@ public class GestorFeedTwitter {
         return graficoSiete;
     }
 
+    public String datosGraficoOchoToJSON() {
+
+        ArrayList<Object[]> aa = this.Pastelito();
+
+        String json = new Gson().toJson(aa);
+
+        System.out.println(json);
+
+        return json;
+
+    }
+
+    public ArrayList<Object[]> Pastelito() {
+        ArrayList<Object[]> graficoCuatro = new ArrayList<Object[]>();
+
+        // Abre una conexión a la base de datos y carga la lista de usuarios.
+        GestorBaseDatos bd = null;
+        try {
+            bd = GestorBaseDatos.obtenerInstancia(URL_Servidor);
+            Connection cnx = bd.obtenerConexion(BASE_DATOS, LOGIN, PASSWORD);
+
+            Statement stm = cnx.createStatement();
+            ResultSet rs = stm.executeQuery("{call pastelito()}");
+            int maxCols = rs.getMetaData().getColumnCount();
+            while (rs.next()) {
+                Object[] registro = new Object[maxCols];
+                for (int i = 0; i < maxCols; i++) {
+                    registro[i] = rs.getObject(i + 1);
+                }
+                graficoCuatro.add(registro);
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        } finally {
+            bd.cerrarConexion();
+        }
+
+        return graficoCuatro;
+    }
+
+    
+    
+    
+    
     private String URL_Servidor = "localhost";
     private static final String BASE_DATOS = "proyecto";
 

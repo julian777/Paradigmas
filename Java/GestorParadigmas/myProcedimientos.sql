@@ -112,6 +112,22 @@ DELIMITER ;
 
 call Densidad_Hora_Cant_Medio();
 
+-- Pastelito devuelve medio y cantidad de mensajes
+
+DELIMITER $$ 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `pastelito`
+()
+BEGIN 
+
+SELECT COUNT(*) Cantidad_Mensajes, medio Medio FROM Twitter
+GROUP BY HOUR(hora);
+
+END$$ 
+DELIMITER ;
+
+call pastelito();
+
+
 -- FACEBOOKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
 
 -- Punto No1 grafica
@@ -225,3 +241,21 @@ END$$
 DELIMITER ;
 
 call Densidad_Hora_Cant_Medio_Facebook();
+
+-- pastelito devuelve medio y cantidad de mensajes
+
+DELIMITER $$ 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `pastelitoF`
+()
+BEGIN 
+
+SELECT COUNT(*) Cantidad_Mensajes, medio Medio FROM Facebook
+GROUP BY HOUR(hora);
+
+END$$ 
+DELIMITER ;
+
+call pastelitoF();
+
+
+
