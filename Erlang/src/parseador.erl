@@ -6,10 +6,14 @@
 -export([insert_facebook/8]).
 -export([select_all_facebook/0]).
 -export([select_patron_facebook/1]).
+-export([select_eat_prolog/1,select_count/0]).
 -include_lib("stdlib/include/qlc.hrl").
 -include("parseador.hrl").
 -author("Julian").
 
+%Necesito, un metodo contador de todas la tuplas y un metodo que borre todas las tuplas.
+%Cuando se activa Java por fuerza Erlang debe detenerse para poder hacer un conteo, no hay de otra
+ 
 %ara twitter
 %crea las tablas por defecto son tipo ordered_set
 init()->
@@ -46,6 +50,16 @@ select_all_twitter() ->
         )) 
     end ).
 
+%% cuenta tuplas
+
+select_count() ->
+    mnesia:transaction( 
+    fun() ->
+        mnesia:table_info(twitter,size)
+         
+    end ).
+
+
 %busca un patron, varios usos
 
 select_patron_twitter( Word ) -> 
@@ -59,6 +73,16 @@ select_patron_twitter( Word ) ->
                         (string:str(F3, Word)>0)
                ] )) 
     end ).
+
+%% busca registros vacios que prolog no ha etiquetado:
+
+select_eat_prolog( Name ) -> 
+    Fun = 
+    fun() ->
+    mnesia:match_object({twitter,'_','_','_','_','_','_',Name,'_','_'})
+    end,
+    {atomic, Results} = mnesia:transaction( Fun), Results.
+
 
 %area facebook
 
