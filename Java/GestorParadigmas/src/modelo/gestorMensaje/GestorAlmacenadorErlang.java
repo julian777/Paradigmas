@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import modelo.baseDatos.GestorBaseDatos;
 
 /**
@@ -75,7 +76,7 @@ public class GestorAlmacenadorErlang {
             stm.clearParameters();
 
             ArrayList<Object> campos = nuevoUsuario.toArray();
-
+            Timestamp hora2 = new Timestamp(Calendar.getInstance().getTime().getTime());
             stm.setString(1, campos.get(0).toString());     // usuario : String
             stm.setString(2, campos.get(1).toString());     // mensaje : String
             stm.setTimestamp(3, (Timestamp) campos.get(2));   // hora : Timestamp horaIngreso
