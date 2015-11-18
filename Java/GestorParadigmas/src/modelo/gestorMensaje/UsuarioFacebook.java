@@ -51,7 +51,7 @@ public class UsuarioFacebook {
     //el gestor lo consulta para insertar datos en la base
     public ArrayList<Object> toArray() {
         ArrayList r = new ArrayList();
-        r.add(getId());
+        //r.add(getId());
         r.add(getUsuario());
         r.add(getMensaje());
         r.add(getHora());

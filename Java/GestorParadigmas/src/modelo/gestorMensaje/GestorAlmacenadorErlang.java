@@ -39,14 +39,25 @@ public class GestorAlmacenadorErlang {
             stm.clearParameters();
 
             ArrayList<Object> campos = nuevoUsuario.toArray();
-
-            stm.setString(1, campos.get(0).toString());     // usuario : String
-            stm.setString(2, campos.get(1).toString());     // mensaje : String
+            if (campos.get(0).toString().length() < 29) {
+                stm.setString(1, campos.get(0).toString());
+            } else {
+                stm.setString(1, campos.get(0).toString().substring(0, 25));
+            }// usuario : String
+            if (campos.get(6).toString().length() > 30) {
+                stm.setString(2, "none");
+            } else {
+                stm.setString(2, campos.get(1).toString());
+            }   // mensaje : String
             stm.setTimestamp(3, (Timestamp) campos.get(2));   // hora : Timestamp horaIngreso
             stm.setString(4, campos.get(3).toString());     // lugar : String
             stm.setBoolean(5, (Boolean) campos.get(4));      // hastag : boolean
             stm.setString(6, campos.get(5).toString());     // medio : String
-            stm.setString(7, campos.get(6).toString());  // tema: String
+            if (campos.get(6).toString().length() > 30) {
+                stm.setString(7, "none");
+            } else {
+                stm.setString(7, campos.get(6).toString());
+            }  // tema: String
             stm.setString(8, campos.get(7).toString());          // estado: String  
 
             registrosActualizados = stm.executeUpdate();
@@ -63,7 +74,6 @@ public class GestorAlmacenadorErlang {
 
     public boolean registrarUsuarioFacebook(UsuarioFacebook nuevoUsuario) {
 
-        System.out.println("Cooooooooooooooooooooooooooooooooooooooooooooooooo");
         boolean exito = false;
         int registrosActualizados = 0;
         GestorBaseDatos bd = null;
@@ -76,14 +86,26 @@ public class GestorAlmacenadorErlang {
             stm.clearParameters();
 
             ArrayList<Object> campos = nuevoUsuario.toArray();
-            Timestamp hora2 = new Timestamp(Calendar.getInstance().getTime().getTime());
-            stm.setString(1, campos.get(0).toString());     // usuario : String
-            stm.setString(2, campos.get(1).toString());     // mensaje : String
+
+            if (campos.get(0).toString().length() < 29) {
+                stm.setString(1, campos.get(0).toString());
+            } else {
+                stm.setString(1, campos.get(0).toString().substring(0, 25));
+            }// usuario : String
+            if (campos.get(6).toString().length() > 30) {
+                stm.setString(2, "none");
+            } else {
+                stm.setString(2, campos.get(1).toString());
+            }   // mensaje : String
             stm.setTimestamp(3, (Timestamp) campos.get(2));   // hora : Timestamp horaIngreso
             stm.setString(4, campos.get(3).toString());     // lugar : String
             stm.setBoolean(5, (Boolean) campos.get(4));      // hastag : boolean
             stm.setString(6, campos.get(5).toString());     // medio : String
-            stm.setString(7, campos.get(6).toString());  // tema: String
+            if (campos.get(6).toString().length() > 30) {
+                stm.setString(7, "none");
+            } else {
+                stm.setString(7, campos.get(6).toString());
+            }  // tema: String
             stm.setString(8, campos.get(7).toString());          // estado: String  
 
             registrosActualizados = stm.executeUpdate();

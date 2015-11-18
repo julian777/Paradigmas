@@ -12,8 +12,11 @@ import com.ericsson.otp.erlang.OtpErlangObject;
 import com.ericsson.otp.erlang.OtpPeer;
 import com.ericsson.otp.erlang.OtpSelf;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
+import java.util.Random;
 
 /**
  *
@@ -39,13 +42,13 @@ public class ErlConnection {
     public ErlConnection(String _peer, String _cookie) {
         peer = _peer;
         cookie = _cookie;
+
         connect();
         mnesiaMysqlTweet();
         disconnect();
-//        connect2();
-//        mnesiaMysqlFacebook();
-//        
-//        disconnect();
+        connect2();
+        mnesiaMysqlFacebook();
+        disconnect();
     }
 
     private void mnesiaMysqlFacebook() {
@@ -53,7 +56,7 @@ public class ErlConnection {
         int z;
 
         z = Integer.parseInt(count.trim());
-        int limite = 2;
+        int limite = 1;
 
         String matriz[][] = new String[z][8];
 
@@ -69,7 +72,7 @@ public class ErlConnection {
                 limite++;
 
             }
-            limite++;
+            //limite++;
         }
 
         ModeloErlang almacena = ModeloErlang.crearInstancia(null);
@@ -80,7 +83,9 @@ public class ErlConnection {
 
         String usuario = "";
         String mensaje = "";
+        String time = "";
         String lugar = "";
+        String ht = "";
         String medio = "";
         String tema = "";
         String estado = "";
@@ -90,21 +95,31 @@ public class ErlConnection {
 
                 usuario = matriz[i][0];
                 mensaje = matriz[i][1];
+                time = matriz[i][2];
                 lugar = matriz[i][3];
+                ht = matriz[i][1];
                 medio = matriz[i][5];
                 tema = matriz[i][6];
                 estado = matriz[i][7];
 
             }
-
+            Timestamp timestamp = new Timestamp(Calendar.getInstance().getTime().getTime());
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ssZ");
+                Date parsedDate = dateFormat.parse((time.trim()).substring(1, 25));
+                timestamp = new java.sql.Timestamp(parsedDate.getTime());
+            } catch (Exception e) {//this generic but you can control another types of exception
+                System.err.println(e.getMessage());
+            }
+            Random r = new  Random();
             usr.setUsuario(usuario);
             usr.setMensaje(mensaje);
-            usr.setHora(hora2);
+            usr.setHora(timestamp);
             usr.setLugar(lugar);
             usr.setHastag(true);
             usr.setMedio(medio);
             usr.setTema(tema);
-            usr.setEstado(estado);
+            usr.setEstado((r.nextBoolean())? "+" : "-");
             gae.registrarUsuarioFacebook(usr);
         }
 
@@ -116,7 +131,7 @@ public class ErlConnection {
         int z;
 
         z = Integer.parseInt(count.trim());
-        int limite = 2;
+        int limite = 1;
 
         String matriz[][] = new String[z][8];
 
@@ -132,7 +147,7 @@ public class ErlConnection {
                 limite++;
 
             }
-            limite++;
+            //limite++;
         }
 
         ModeloErlang almacena = ModeloErlang.crearInstancia(null);
@@ -143,7 +158,9 @@ public class ErlConnection {
 
         String usuario = "";
         String mensaje = "";
+        String time = "";
         String lugar = "";
+        String ht = "";
         String medio = "";
         String tema = "";
         String estado = "";
@@ -153,21 +170,32 @@ public class ErlConnection {
 
                 usuario = matriz[i][0];
                 mensaje = matriz[i][1];
+                time = matriz[i][2];
                 lugar = matriz[i][3];
+                ht = matriz[i][1];
                 medio = matriz[i][5];
                 tema = matriz[i][6];
                 estado = matriz[i][7];
 
             }
-
+            Timestamp timestamp = new Timestamp(Calendar.getInstance().getTime().getTime());
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("E MMM dd HH:mm:ss Z yyyy",Locale.ENGLISH);
+                System.out.println(dateFormat.format(timestamp));
+                Date parsedDate = dateFormat.parse((time.trim()).substring(1, 31));
+                timestamp = new java.sql.Timestamp(parsedDate.getTime());
+            } catch (Exception e) {//this generic but you can control another types of exception
+                System.err.println(e.getMessage());
+            }
+            Random r = new  Random();
             usr.setUsuario(usuario);
             usr.setMensaje(mensaje);
-            usr.setHora(hora);
+            usr.setHora(timestamp);
             usr.setLugar(lugar);
             usr.setHastag(true);
             usr.setMedio(medio);
             usr.setTema(tema);
-            usr.setEstado(estado);
+            usr.setEstado((r.nextBoolean())? "+" : "-");
             gae.registrarUsuarioTwitter(usr);
         }
 
@@ -187,15 +215,14 @@ public class ErlConnection {
 // conn.sendRPC("spooky_sequence", "sequence", new OtpErlangList("5"));
 // le mando el numero solo, sin parentesis para mandar un parametro
 
-            conn.sendRPC("parseador", "select_all_twitter", new OtpErlangList(""));
+            conn.sendRPC("parseador", "select_all_tweet", new OtpErlangList(""));
 
             objeto = conn.receiveRPC().toString();
 
 //            conn.sendRPC("parseador", "select_all_facebook", new OtpErlangList(""));
 //
 //            objetoF = conn.receiveRPC().toString();
-
-            conn.sendRPC("parseador", "select_count", new OtpErlangList(""));
+            conn.sendRPC("parseador", "select_count_tweet", new OtpErlangList(""));
 
             String aux = conn.receiveRPC().toString();
 
@@ -212,7 +239,7 @@ public class ErlConnection {
         }
 
     }
-    
+
     private void connect2() {
         System.out.print("Please wait, connecting to " + peer + "....\n");
 
@@ -230,12 +257,11 @@ public class ErlConnection {
 //            conn.sendRPC("parseador", "select_all_twitter", new OtpErlangList(""));
 //
 //            objeto = conn.receiveRPC().toString();
-
-            conn.sendRPC("parseador", "select_all_facebook", new OtpErlangList(""));
+            conn.sendRPC("parseador", "select_all_face", new OtpErlangList(""));
 
             objetoF = conn.receiveRPC().toString();
 
-            conn.sendRPC("parseador", "select_count", new OtpErlangList(""));
+            conn.sendRPC("parseador", "select_count_face", new OtpErlangList(""));
 
             String aux = conn.receiveRPC().toString();
 
@@ -252,7 +278,6 @@ public class ErlConnection {
         }
 
     }
-
 
     public String getCount() {
         return count;
