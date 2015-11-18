@@ -8,7 +8,7 @@ function initDensoF() {
 
     var datos = document.getElementById("datosDF").value;
     var datosJson = JSON.parse(datos);
-
+    alert(datos);
     matriz = new Array(datosJson.length);
     for (var i = 0; i < datosJson.length; i++) {
         var str = JSON.stringify(datosJson[i]);
@@ -26,7 +26,7 @@ function initDensoF() {
         matriz[i][2] = res[2];
 
     }
-
+    alert(JSON.stringify(matriz));
     cargarGraficoDensoF();
 
 }
@@ -41,6 +41,10 @@ function cargarGraficoDensoF() {
         cantidad_mensajes[i] = matriz[i][1];
         medio[i] = matriz[i][2]; 
     }
+    alert(JSON.stringify(hora));
+    alert(JSON.stringify(medio));
+    alert(JSON.stringify(cantidad_mensajes));
+    
 
     var barChartData = {
         labels: medio,
@@ -67,8 +71,8 @@ function cargarGraficoDensoF() {
             }
         ]
 
-    }
-
+    };
+    alert(JSON.stringify(barChartData));
     var ctx3 = document.getElementById("chart-area7F").getContext("2d");
-    window.myPie = new Chart(ctx3).Line(barChartData, {responsive: true});
+    window.myPie = new Chart(ctx3).Bar(barChartData, {responsive: true});
 }    

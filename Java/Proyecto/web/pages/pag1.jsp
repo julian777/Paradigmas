@@ -270,11 +270,10 @@
         initUsuario();
         initMiCantidad();
         initAnimo();
-
+        alert("jja");
     </script>
     <script src="../js/barrasFrecuencia.js"></script>
     <script src="../js/donaHashtag.js"></script>
-    <script src="../js/histogramaApariciones.js"></script>
     <script src="../js/usuarioBarras.js"></script>
     <script src="../js/Chart.js"></script>
     <!-- Custom Theme JavaScript -->

@@ -10,6 +10,7 @@ function initAparicioF() {
     var datos = document.getElementById("datosAF").value;
     var datosJson = JSON.parse(datos);
     loco = datosJson;
+    alert(JSON.stringify(datos));
     for (var i = 0; i < datosJson.length; i++) {
         st = JSON.stringify(datosJson[i]);
         var res = st.split(",");
@@ -24,7 +25,8 @@ function initAparicioF() {
         vector2[i] = res[0];
 
     }
-
+    alert(JSON.stringify(vector1));
+    alert(JSON.stringify(vector2));
     cargarGraficoAparicioF();
 
 }
@@ -58,9 +60,9 @@ function cargarGraficoAparicioF() {
             }
         ]
 
-    }
+    };
 
-
+    alert(JSON.stringify(lineChartData));
     var ctx4 = document.getElementById("chart-area8F").getContext("2d");
     window.myPie = new Chart(ctx4).Line(lineChartData, {responsive: true});
 }

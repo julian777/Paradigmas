@@ -33,14 +33,14 @@ function initDonaF() {
 
 function cargarGraficoDonaF() {
 
-    var sinHastag = [];
-    var conHastag = [];
+    var sinHastag = 0;
+    var conHastag = 0;
 
     for (var i = 0; i < matriz.length; i++) {
-        sinHastag[i] = matriz[i][0];
-        conHastag[i] = matriz[i][1];
+        sinHastag = Number(matriz[i][0]);
+        conHastag = Number(matriz[i][1]);
     }
-    var total = sinHastag * conHastag;
+    var total = sinHastag + conHastag;
     var x = (sinHastag*100)/total;
     var y = (conHastag*100)/total;
 

@@ -41,25 +41,25 @@ function cargarGraficoCantidadF() {
 
     var pieData20 = [{value: 40, color: "#0b82e7", highlight: "#0c62ab", label: "Chistes"},
         {
-            value: 12,
+            value: 15,
             color: "#e3e860",
             highlight: "#a9ad47",
             label: "Politica"
         },
         {
-            value: 2,
+            value: 23,
             color: "#eb5d82",
             highlight: "#b74865",
             label: "Religion"
         },
         {
-            value: 98,
+            value: 60,
             color: "#5ae85a",
             highlight: "#42a642",
             label: "Futbol"
         },
         {
-            value: 45,
+            value: 105,
             color: "#e965db",
             highlight: "#a6429b",
             label: "Desconocido"

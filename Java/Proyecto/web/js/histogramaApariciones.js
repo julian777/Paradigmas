@@ -1,8 +1,9 @@
 var vector = [];
 var vector1 = [];
 var vector2 = [];
-function initAparicio() {
 
+function initAparicio() {
+    alert("aaa");
     var patron1 = "[";
     var patron2 = '"';
     var patron3 = "]";
@@ -10,38 +11,38 @@ function initAparicio() {
     var datos = document.getElementById("datosA").value;
     var datosJson = JSON.parse(datos);
     loco = datosJson;
+    alert(JSON.stringify(datos));
     for (var i = 0; i < datosJson.length; i++) {
         st = JSON.stringify(datosJson[i]);
         var res = st.split(",");
-        
-          
+
+
         res[0] = res[0].replace(patron1, '');
         res[0] = res[0].replace(patron2, '');
         res[0] = res[0].replace(patron2, '');
         res[1] = res[1].replace(patron3, '');
- 
+
         vector1[i] = res[1];
         vector2[i] = res[0];
 
     }
-
+    alert(JSON.stringify(vector1));
+    alert(JSON.stringify(vector2));
     cargarGraficoAparicio();
 
 }
-
 function cargarGraficoAparicio() {
-
     var mensaje = [];
     var cantidad_mensajes = [];
-    
+
     for (var i = 0; i < vector1.length; i++) {
-        
+
         cantidad_mensajes[i] = vector1[i];
         mensaje[i] = vector2[i];
 
-         
+
     }
-    
+
 
     var lineChartData = {
         labels: mensaje,
@@ -57,8 +58,8 @@ function cargarGraficoAparicio() {
                 data: cantidad_mensajes
             }
         ]
-
-    }
+    };
+    alert(JSON.stringify(lineChartData));
 
 
     var ctx4 = document.getElementById("chart-area8").getContext("2d");

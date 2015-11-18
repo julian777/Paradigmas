@@ -192,7 +192,7 @@
 
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> Grafico de Pastel
+                                <i class="fa fa-bar-chart-o fa-fw"></i>  Cantidad de mensajes por tema
                             </div>
                             <input id="cantidadF" hidden name="cantidadF" type="text" value='<%=cantidadf%>'/>
                             <div class="panel-body">
