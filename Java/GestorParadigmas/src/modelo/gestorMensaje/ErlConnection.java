@@ -104,10 +104,10 @@ public class ErlConnection {
 //        }
         disconnect();
 
-        connect2();
-        mnesiaMysqlFacebook();
-        
-        disconnect();
+//        connect2();
+//        mnesiaMysqlFacebook();
+//        
+//        disconnect();
     }
 
     private void mnesiaMysqlFacebook() {
