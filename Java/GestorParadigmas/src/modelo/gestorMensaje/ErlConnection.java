@@ -41,69 +41,7 @@ public class ErlConnection {
         cookie = _cookie;
         connect();
         mnesiaMysqlTweet();
-        
-
-//        Timestamp hora = new Timestamp(Calendar.getInstance().getTime().getTime());
-//
-//        int z;
-//
-//        z = Integer.parseInt(count.trim());
-//        int limite = 2;
-//
-//        String matriz[][] = new String[z][8];
-//
-//        int capacidad = z * 10;
-//
-//        String[] mnesia = new String[capacidad];
-//        mnesia = objeto.split(",");
-//
-//        for (int j = 0; j < z; j++) {
-//            for (int k = 0; k < 8; k++) {
-//
-//                matriz[j][k] = mnesia[limite];
-//                limite++;
-//
-//            }
-//            limite++;
-//        }
-//
-//        ModeloErlang almacena = ModeloErlang.crearInstancia(null);
-//
-//        GestorAlmacenadorErlang gae = almacena.getgUsuarios();
-//
-//        UsuarioTwitter usr = new UsuarioTwitter();
-//
-//        String usuario = "";
-//        String mensaje = "";
-//        String lugar = "";
-//        String medio = "";
-//        String tema = "";
-//        String estado = "";
-//        for (int i = 0; i < z; i++) {
-//
-//            for (int u = 0; u < 8; u++) {
-//
-//                usuario = matriz[i][0];
-//                mensaje = matriz[i][1];
-//                lugar = matriz[i][3];
-//                medio = matriz[i][5];
-//                tema = matriz[i][6];
-//                estado = matriz[i][7];
-//
-//            }
-//
-//            usr.setUsuario(usuario);
-//            usr.setMensaje(mensaje);
-//            usr.setHora(hora);
-//            usr.setLugar(lugar);
-//            usr.setHastag(true);
-//            usr.setMedio(medio);
-//            usr.setTema(tema);
-//            usr.setEstado(estado);
-//            gae.registrarUsuarioTwitter(usr);
-//        }
         disconnect();
-
 //        connect2();
 //        mnesiaMysqlFacebook();
 //        
