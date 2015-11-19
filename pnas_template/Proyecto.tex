@@ -1,0 +1,414 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Proceedings of the National Academy of Sciences (PNAS)
+% LaTeX Template
+% Version 1.0 (19/5/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% The PNAStwo class was created and is owned by PNAS:
+% http://www.pnas.org/site/authors/LaTex.xhtml
+% This template has been modified from the blank PNAS template to include
+% examples of how to insert content and drastically change commenting. The
+% structural integrity is maintained as in the original blank template.
+%
+% Original header:
+%% PNAStmpl.tex
+%% Template file to use for PNAS articles prepared in LaTeX
+%% Version: Apr 14, 2008
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+% BASIC CLASS FILE
+%------------------------------------------------
+
+%% PNAStwo for two column articles is called by default.
+%% Uncomment PNASone for single column articles. One column class
+%% and style files are available upon request from pnas@nas.edu.
+
+%\documentclass{pnasone}
+\documentclass{pnastwo}
+
+\usepackage{listings}
+%------------------------------------------------
+% POSITION OF TEXT
+%------------------------------------------------
+
+%% Changing position of text on physical page:
+%% Since not all printers position
+%% the printed page in the same place on the physical page,
+%% you can change the position yourself here, if you need to:
+
+% \advance\voffset -.5in % Minus dimension will raise the printed page on the 
+                         %  physical page; positive dimension will lower it.
+
+%% You may set the dimension to the size that you need.
+
+%------------------------------------------------
+% GRAPHICS STYLE FILE
+%------------------------------------------------
+
+%% Requires graphics style file (graphicx.sty), used for inserting
+%% .eps/image files into LaTeX articles.
+%% Note that inclusion of .eps files is for your reference only;
+%% when submitting to PNAS please submit figures separately.
+
+%% Type into the square brackets the name of the driver program 
+%% that you are using. If you don't know, try dvips, which is the
+%% most common PC driver, or textures for the Mac. These are the options:
+
+% [dvips], [xdvi], [dvipdf], [dvipdfm], [dvipdfmx], [pdftex], [dvipsone],
+% [dviwindo], [emtex], [dviwin], [pctexps], [pctexwin], [pctexhp], [pctex32],
+% [truetex], [tcidvi], [vtex], [oztex], [textures], [xetex]
+
+\usepackage{graphicx}
+
+%------------------------------------------------
+% OPTIONAL POSTSCRIPT FONT FILES
+%------------------------------------------------
+
+%% PostScript font files: You may need to edit the PNASoneF.sty
+%% or PNAStwoF.sty file to make the font names match those on your system. 
+%% Alternatively, you can leave the font style file commands commented out
+%% and typeset your article using the default Computer Modern 
+%% fonts (recommended). If accepted, your article will be typeset
+%% at PNAS using PostScript fonts.
+
+% Choose PNASoneF for one column; PNAStwoF for two column:
+%\usepackage{PNASoneF}
+%\usepackage{PNAStwoF}
+
+%------------------------------------------------
+% ADDITIONAL OPTIONAL STYLE FILES
+%------------------------------------------------
+
+%% The AMS math files are commonly used to gain access to useful features
+%% like extended math fonts and math commands.
+
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+\makeatletter
+% \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
+\patchcmd{\maketitle}{\@copyrightspace}{}{}{}
+\makeatother
+%------------------------------------------------
+% OPTIONAL MACRO FILES
+%------------------------------------------------
+
+%% Insert self-defined macros here.
+%% \newcommand definitions are recommended; \def definitions are supported
+
+%\newcommand{\mfrac}[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+%\def\s{\sigma}
+
+%------------------------------------------------
+% DO NOT EDIT THIS SECTION
+%------------------------------------------------
+
+%% For PNAS Only:
+\contributor{}
+\url{}
+\copyrightyear{2015}
+\issuedate{1}
+\volume{1}
+\issuenumber{}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE AND AUTHORS
+%----------------------------------------------------------------------------------------
+
+\title{Proyecto de paradigmas} % For titles, only capitalize the first letter
+
+%------------------------------------------------
+
+%% Enter authors via the \author command.  
+%% Use \affil to define affiliations.
+%% (Leave no spaces between author name and \affil command)
+
+%% Note that the \thanks{} command has been disabled in favor of
+%% a generic, reserved space for PNAS publication footnotes.
+
+%% \author{<author name>
+%% \affil{<number>}{<Institution>}} One number for each institution.
+%% The same number should be used for authors that
+%% are affiliated with the same institution, after the first time
+%% only the number is needed, ie, \affil{number}{text}, \affil{number}{}
+%% Then, before last author ...
+%% \and
+%% \author{<author name>
+%% \affil{<number>}{}}
+
+%% For example, assuming Garcia and Sonnery are both affiliated with
+%% Universidad de Murcia:
+%% \author{Roberta Graff\affil{1}{University of Cambridge, Cambridge,
+%% United Kingdom},
+%% Javier de Ruiz Garcia\affil{2}{Universidad de Murcia, Bioquimica y Biologia
+%% Molecular, Murcia, Spain}, \and Franklin Sonnery\affil{2}{}}
+
+\author{Julian Cambronero\affil{1}{Universidad Nacional de Costa Rica}
+\and
+Mario Romero\affil{1}{}}
+
+\contributor{
+	Prof. Eddy Ramirez\\
+	II - 2015
+}
+
+
+%----------------------------------------------------------------------------------------
+
+\maketitle % The \maketitle command is necessary to build the title page
+
+\begin{article}
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT, KEYWORDS AND ABBREVIATIONS
+%----------------------------------------------------------------------------------------
+
+\begin{abstract}
+La teoría de lenguajes es amplia y apenas ha tenido éxito en el desarrollo de lenguajes de programación, sin embargo ha tenido poco éxito en el parseo 1 exitoso sin errores de lenguaje natural, que será parte de este proyecto.\\
+Por otra parte, la creación de lenguajes de programación está dada para facilitar el desarrollo de una aplicación particular. Para ello es que se realizan lenguajes de programación en donde es fácil trabajar con ciertas características por encima de otras.
+\end{abstract}
+
+%------------------------------------------------
+
+\keywords{Erlang | Prlog | Java | Facebook | Twitter} % When adding keywords, separate each term with a straight line: |
+
+%------------------------------------------------
+
+%% Optional for entering abbreviations, separate the abbreviation from
+%% its definition with a comma, separate each pair with a semicolon:
+%% for example:
+%% \abbreviations{SAM, self-assembled monolayer; OTS,
+%% octadecyltrichlorosilane}
+
+% \abbreviations{}
+
+
+%----------------------------------------------------------------------------------------
+%	PUBLICATION CONTENT
+%----------------------------------------------------------------------------------------
+
+%% The first letter of the article should be drop cap: \dropcap{} e.g.,
+%\dropcap{I}n this article we study the evolution of ''almost-sharp'' fronts
+
+\section{Introduction}
+
+\dropcap{E}n el presente trabajo se planteó el reto de unir varios lenguajes a saber, Prolog, Erlang y Java, esto nos permitió entender mucho de lo que se puede hacer y lo que no se puede hacer en cada uno de ellos. El problema consistía en por medio de hilos estar testeando los sitios de desarrolladores de facebook y twitter.\\
+Por otra parte un programa en prolog debia estar etiquetando los mensajes con los temas que consideraba basado en un banco de palabras y  finalmente estos datos etiquetados se llevan a Java para su posterior clasificación en una grafica.\\
+
+\section{Programa}
+
+\subsection{Java: }
+
+Se nos permitió para este proyecto utilizar java web, lo cual nos dió la utilidad de bootstrap para los estilos css y Charts.js para el manejo de graficos, siendo javascript otro lenguaje utilizado para poder interactuar esta parte visual.\\
+Se utilizó una biblioteca de clases para alimentar a java web de funcionalidad de los datos a recolectar. En nuestra biblioteca de clases se logró hacer la conección con la base de datos de MySQL y se utilizó un .jar llamada Jinterface.jar para el manejo de objetos OTP que reconoce un nodo Erlang. Para la interacción entre Jinterface y Erlang se debía utilizar -setcookie Cookie y -sname Name para la creación del nodo.\\
+
+\subsubsection{MySQL: }
+
+En la base de datos libre escogimos MySQL, se utilizaron procesos almacenados, diez en total, esto para alimentar la información de las gráficas desde java.\\
+
+
+\subsection{Erlang: }
+
+En la siguiente sección se describe las partes de la aplicacion de erlang encargada de manejar las consultas a las redes sociales, la base NoSQL y la solicitud de clasificación a prolog.\\
+\subsubsection{Consulta redes sociales: }
+
+En esta sección se realiza una conneccion a las API de cosulta libre de facebook y twitter. Ademas se  transforman esos datos (JSON) a tuplas de erlang para su posterior tratamiento
+
+\lstset{language=erlang} 
+\begin{lstlisting}[frame=single] 
+request(X) -> 
+ssl:start(),
+inets:start(),
+{ok,{{_NewVersion, 200, _NewReasonPhrase},
+Header, Body}} = httpc:request(get,
+	{X, []}, [], []),
+Data=json:val(json:val(json:parse(Body),
+	"posts"),"data"),
+[[comments(C)||C<-L]||L<-post(Data)].
+\end{lstlisting}
+
+En el código anterior se muestra el proceso de consulta a al API de facebook por medio del modulo httpc, asi como la conversion de json y su posterior analisis.\\
+
+\subsubsection{Mnesia: }
+
+Para la parte de Mnesia se investigó los diferentes tipos de tablas, escogiendo como la más idonea la de tipo ordered set, debido a que una tabla cuyos registros se llenan con las consultas de los clientes facebook y twitter debe mantenerse integra hasta la posteriór clasificación de prolog.\\
+
+\lstset{language=erlang} 
+\begin{lstlisting}[frame=single]  % Start your code-block
+init()->
+ mnesia:create_table(data,
+ [{attributes, record_info(fields, data)}]).
+\end{lstlisting}
+
+Se utilizó dos archivos: un .hrl donde se encuentran los record que especifican los atributos de las tablas, un .erl en donde se tienen los métodos para hacer los metodos CRUD necesarios.\\
+
+
+\subsubsection{Clasificacion PROLOG: }
+
+En esta sección erlang viene a funcionar como un cliente que consume de los servicio de un servidor web prolog. El cual tiene como funcion categorizar las hileras de texto o mensajes que le ingresan.\\
+
+\lstset{language=erlang} 
+\begin{lstlisting}[frame=single]
+pedir(A) ->
+    inets:start(),
+    ssl:start(), 
+    E = "http://localhost:1234/?msg=_",
+    Aa = re:replace(A," ","_",
+    		[global,{return,list}]),
+    B = E++Aa,
+    R = rest:response_body(
+    		request(get,{B,[]})),
+    re:replace(R,"\"","",
+    		[global,{return,list}]). 
+\end{lstlisting}
+
+
+
+\subsection{Prolog: }
+ En esta sección se pretende crear un programa con la capacidad de reconocer los temas desarrollados en los comentarios y post de las redes sociales con las que se decidio trabajar.\\
+Para esto se utiliza un servidor en SWI-PROLOG que permita a otros lenguajes y aplicaciones dentro del proyecto hacer uno de esta capacidad. Como ejemplo de esto:\\
+
+\lstset{language=Prolog} 
+\begin{lstlisting}[frame=single]  % Start your code-block
+server(Port) :-
+http_server(http_dispatch, [port(Port)]).
+:- http_handler('/', func,[]).
+\end{lstlisting}
+
+Luego para el funcionamiento de este proceso se crea un diccionario de 1514 palabras clasificadas por temas (Politica, Futbol, Religion, Chiste, None). Esto mediante las sentencias:
+
+\lstset{language=Prolog} 
+\begin{lstlisting}[frame=single] 
+word(PALABRA,TEMA).
+\end{lstlisting}
+
+Con esto se logra tener un banco de datos a modo de web service para usarse por la funcion de Erlang que colecta los datos de la red social.\\
+
+\section{Extra}
+
+A continuación se define  la seccion referente a puntos extra en el presente trabajo.
+
+\subsection{Programa C: }
+
+En este programa se pretende cetralizar el proceso de inicio de las 3 aplicaciones en un solo archivo con el fin de facilitar el uso de la misma y a su vez tener contacto con otro paradigma ademas de los tratados en el trabajo.\\
+Para hacer esto  se desarrollo una aplicacion de cosola que pueda abrir procesos independientes para iniciar las distintas secciones.\\
+
+\lstset{language=c} 
+\begin{lstlisting}[frame=single] 
+pid_t  pid;
+pid = fork();
+\end{lstlisting}
+
+Ademas se utiliza comandos de sistema para ejecutar las demas aplicaciones. Seguidamente detallado todo el proceso.\\
+
+
+\lstset{language=c} 
+\begin{lstlisting}[frame=single] 
+int main(){
+    pid_t  pid;
+    pid = fork();
+    if (pid == 0) {
+        iniciarProlog();
+    }else{
+	    pid = fork();
+	    if (pid == 0) 
+		iniciarErlang();
+		
+    }
+	return 0;
+}
+\end{lstlisting}
+
+%------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+%% PNAS does not support submission of supporting .tex files such as BibTeX.
+%% Instead all references must be included in the article .tex document. 
+%% If you currently use BibTeX, your bibliography is formed because the 
+%% command \verb+\bibliography{}+ brings the <filename>.bbl file into your
+%% .tex document. To conform to PNAS requirements, copy the reference listings
+%% from your .bbl file and add them to the article .tex file, using the
+%% bibliography environment described above.  
+
+%%  Contact pnas@nas.edu if you need assistance with your
+%%  bibliography.
+
+% Sample bibliography item in PNAS format:
+%% \bibitem{in-text reference} comma-separated author names up to 5,
+%% for more than 5 authors use first author last name et al. (year published)
+%% article title  {\it Journal Name} volume #: start page-end page.
+%% ie,
+% \bibitem{Neuhaus} Neuhaus J-M, Sitcher L, Meins F, Jr, Boller T (1991) 
+% A short C-terminal sequence is necessary and sufficient for the
+% targeting of chitinases to the plant vacuole. 
+% {\it Proc Natl Acad Sci USA} 88:10362-10366.
+
+
+
+
+%----------------------------------------------------------------------------------------
+
+\end{article}
+
+%----------------------------------------------------------------------------------------
+%	FIGURES AND TABLES
+%----------------------------------------------------------------------------------------
+
+%% Adding Figure and Table References
+%% Be sure to add figures and tables after \end{article}
+%% and before \end{document}
+
+%% For figures, put the caption below the illustration.
+%%
+%% \begin{figure}
+%% \caption{Almost Sharp Front}\label{afoto}
+%% \end{figure}
+
+
+%% For Tables, put caption above table
+%%
+%% Table caption should start with a capital letter, continue with lower case
+%% and not have a period at the end
+%% Using @{\vrule height ?? depth ?? width0pt} in the tabular preamble will
+%% keep that much space between every line in the table.
+
+%% \begin{table}
+%% \caption{Repeat length of longer allele by age of onset class}
+%% \begin{tabular}{@{\vrule height 10.5pt depth4pt  width0pt}lrcccc}
+%% table text
+%% \end{tabular}
+%% \end{table}
+
+
+%% For two column figures and tables, use the following:
+
+%% \begin{figure*}
+%% \caption{Almost Sharp Front}\label{afoto}
+%% \end{figure*}
+
+%% \begin{table*}
+%% \caption{Repeat length of longer allele by age of onset class}
+%% \begin{tabular}{ccc}
+%% table text
+%% \end{tabular}
+%% \end{table*}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

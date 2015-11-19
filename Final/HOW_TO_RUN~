@@ -1,0 +1,3 @@
+%	Ejecutar la siguiente linea en CLI
+
+gcc run.c -o run && ./ run
